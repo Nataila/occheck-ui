@@ -2,8 +2,7 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 import './init.css';
@@ -13,6 +12,8 @@ import OcNav from './components/OcNav';
 import Home from './pages/Home';
 import Comments from './pages/Comments';
 import Check from './pages/Check';
+import SignUp from './pages/SignUp';
+import SignIn from './pages/SignIn';
 
 import { Layout } from 'antd';
 
@@ -27,6 +28,12 @@ function App() {
         </Header>
         <Content>
           <Switch>
+            <Route path="/signin">
+              <SignIn />
+            </Route>
+            <Route path="/signup">
+              <SignUp />
+            </Route>
             <Route path="/check">
               <Check />
             </Route>
