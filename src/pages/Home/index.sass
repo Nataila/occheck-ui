@@ -1,0 +1,74 @@
+.home
+  background: #FFF
+.banner
+  padding-top: 74px
+  background-image: linear-gradient(to right, #1890FF, #4ABBFF);
+  .banner-wrapper
+    margin: 0 auto
+    width: fit-content
+    display: flex
+    justify-content: space-between
+    align-items: center
+    .banner-doc
+      margin: -100px 80px 0 40px
+      h1, h3
+        color: #FFF
+    .banner1img
+      align-self: flex-end
+.comment-col
+  position: relative
+  &:nth-child(n+4)
+    margin-top: 80px
+  &:nth-child(2)
+    .comment-item
+      .content
+        height: 80px
+  &:nth-child(5)
+    top: -70px
+  &:nth-child(8)
+    top: -70px
+  &:nth-child(11)
+    top: -70px
+  &:nth-child(14)
+    top: -70px
+  &:nth-last-child(2)
+    top: -70px
+    .comment-item
+      .content
+        height: 190px
+.comment-item
+  width: 368px
+  padding: 20px 0
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+  position: relative
+  .name
+    font-size: 18px
+    color: #262F3C
+    padding: 10px 45px
+  .location
+    font-size: 15px
+    color: #1890FF
+    padding: 10px 45px
+    border-bottom: 1px solid #EBEBEB;
+  .content
+    color: #9C9C9C
+    font-size: 16px
+    font-weight: 300
+    height: 120px
+    padding: 10px 45px
+  .time
+    font-size: 18px
+    color: #9C9C9C
+    font-weight: 300
+    padding: 10px 45px
+    // box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+  &:before
+    content: ""
+    width: 0px
+    height: 0px
+    border-top: 25px solid #FFF
+    border-right: 40px solid transparent
+    position: absolute
+    bottom: -25px
+    left: 60px
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, .1));

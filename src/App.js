@@ -5,9 +5,11 @@ import {
   Route
 } from "react-router-dom";
 
-import './init.css';
+import 'antd/dist/antd.css';
+import './init.sass';
 import './global.sass';
 import OcNav from './components/OcNav';
+import OcFooter from './components/OcFooter';
 
 import Home from './pages/Home';
 import Comments from './pages/Comments';
@@ -23,10 +25,10 @@ function App() {
   return (
     <Layout>
       <Router>
-        <Header>
+        <header>
           <OcNav />
-        </Header>
-        <Content>
+        </header>
+        <div>
           <Switch>
             <Route path="/signin">
               <SignIn />
@@ -44,8 +46,10 @@ function App() {
               <Home />
             </Route>
           </Switch>
-        </Content>
-        <Footer>Footer</Footer>
+        </div>
+        <footer>
+          <OcFooter />
+        </footer>
       </Router>
     </Layout>
   )

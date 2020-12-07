@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LOGO from '../../assets/imgs/logo-white.png'
 
 import './index.sass';
 
 const OcNav = () => {
   return (
     <div className='nav-wrapper flex flex-between'>
-      <div>logo</div>
+      <div>
+        <img src={ LOGO } alt="" />
+      </div>
       <div className='nav-list-wrapper'>
         <ul>
           <li>
