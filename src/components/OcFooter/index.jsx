@@ -3,7 +3,7 @@ import './index.sass';
 
 export default function OcFooter() {
   return (
-    <div class="footer">
+    <div className="footer">
       <div className="footer-top">
         <div className="container">
           <div className="left">
