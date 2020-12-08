@@ -1,17 +1,50 @@
 .home
   background: #FFF
-.banner
-  padding-top: 74px
-  background-image: linear-gradient(to right, #1890FF, #4ABBFF);
-  .banner-wrapper
-    margin: 0 auto
-    width: fit-content
-    display: flex
-    justify-content: space-between
-    align-items: center
-    .banner-doc
-      margin: -100px 80px 0 40px
-      h1, h3
-        color: #FFF
-    .banner1img
-      align-self: flex-end
+  .banner
+    padding-top: 74px
+    background-image: linear-gradient(to right, #1890FF, #4ABBFF);
+    .banner-wrapper
+      margin: 0 auto
+      width: fit-content
+      display: flex
+      justify-content: space-between
+      align-items: center
+      .banner-doc
+        margin: -100px 80px 0 40px
+        position: absolute
+        h1, h3
+          color: #FFF
+  .step
+    position: relative
+    background: #FFF
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+    padding: 100px 0
+    border-radius: 10px
+    margin-top: -170px
+    .step-col
+      padding: 0 63px
+      position: relative
+      div
+        &:first-child
+          font-size: 54px
+          color: #4ABBFF
+        &:nth-child(2)
+          font-size: 20px
+          color: #151515
+          font-weight: 400
+        &:nth-child(3)
+          height: 70px
+          color: #9B9B9B
+      img
+        margin-top: 40px
+        height: 300px
+      & + .step-col
+        &:before
+          content: ""
+          width: 2px
+          background: #EBEBEB
+          height: 90%
+          position: absolute
+          left: 0
+          top: 10%
+                                    
