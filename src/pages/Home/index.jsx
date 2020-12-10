@@ -7,6 +7,8 @@ import BannerImg1 from '../../assets/imgs/home/banner1.png';
 import Step1Img from '../../assets/imgs/home/step1.png';
 import Step2Img from '../../assets/imgs/home/step2.png';
 import Step3Img from '../../assets/imgs/home/step3.png';
+import TopIconImg from '../../assets/imgs/home/t.png';
+import BottomIconImg from '../../assets/imgs/home/b.png';
 
 import UseOccheck from '../../components/UseOccheck';
 import CommentList from '../../components/CommentsList';
@@ -50,6 +52,26 @@ export default function Home () {
       </div>
       <div style={{ marginTop: '62px'}}>
         <UploadFile />
+      </div>
+      <div className="about container">
+        <div className="title text-center">关于OCcheck</div>
+        <div className="about-top-icon">
+          <img src={TopIconImg} alt="" />
+        </div>
+        <div className="about-content">
+          OCcheck.com是一家专注于留学生课程辅导与论文润色的学术平台，由硅谷著名天使基金KPCB创始人托姆斯·铂金斯(Thomas Perkins)投资，旗下拥有产品OCcheck（Oxford&Cambridge Check）免费论文检测系统基于大数据海量学术文献资源及互联网资源，与Turnitin、Grammaly、知网等国内外大型论文学术检测机构深度授权合作，坚持客观、公正、精准、全面的原则，对学术不端行为进行管理，为用户提供客观详实的查重报告，为出版、科研、学术等提供支持。
+        </div>
+        <div className="about-bottom-icon">
+          <img src={BottomIconImg} alt="" />
+        </div>
+        <div className="sub-title" style={{ fontSize: "30px"}}>一站式免费查重及语法检查和预打分服务</div>
+        <div>
+          <ul className="about-ul">
+            <li>提供免费Turnitin（国际版、UK版）查重报告</li>
+            <li>提供免费Grammaly（高级版）语法检测报告</li>
+            <li>短时间内通过AIspring全球博士数据库匹配专家对论文进行打分评估</li>
+          </ul>
+        </div>
       </div>
       <UseOccheck />
     </div>
