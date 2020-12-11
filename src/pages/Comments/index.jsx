@@ -10,7 +10,7 @@ import CommentList from '../../components/CommentsList';
 
 export default function Comments () {
   return (
-    <div className='comments'>
+    <div className='comments-root'>
       <div className="banner">
         <div className="banner-wrapper">
           <img src={Banner1Img} className='banner1img' alt="" />

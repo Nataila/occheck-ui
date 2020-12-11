@@ -18,7 +18,6 @@ export default function CommentList() {
 
   return (
     <div className="comments container">
-      <div className="title text-center">用户评价</div>
       <div className="comments-list">
         <Row>
           {commentList.map((item) =>

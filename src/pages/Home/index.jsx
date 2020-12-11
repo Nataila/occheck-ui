@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Row, Col } from 'antd';
 
 import './index.sass';
@@ -9,13 +11,33 @@ import Step2Img from '../../assets/imgs/home/step2.png';
 import Step3Img from '../../assets/imgs/home/step3.png';
 import TopIconImg from '../../assets/imgs/home/t.png';
 import BottomIconImg from '../../assets/imgs/home/b.png';
+import AboutList1 from '../../assets/imgs/home/aboutList1.png';
+import AboutList2 from '../../assets/imgs/home/aboutList2.png';
+import AboutList3 from '../../assets/imgs/home/aboutList3.png';
 
 import UseOccheck from '../../components/UseOccheck';
-import CommentList from '../../components/CommentsList';
 import UploadFile from '../../components/UploadFile';
+import CommentList from '../../components/CommentsList';
 
 
 export default function Home () {
+  const [qaIndex, setQaIndex] = useState(0)
+  const qData = [
+    '本网站检测资质问题',
+    'Turnitin国际版与TurnitinUK版有什么区别？如何选择？',
+    '你们的查重都是免费使用吗？',
+    '检测后会不会被Turnitin收录，导致下次检测重复率高？',
+    '抄袭率一般低于多少算合格？',
+    '关于检测时间问题',
+    'Turnitin常见的修改相似的方法有哪些？',
+    '关于检测报告问题（如何看检测报告单）',
+    'Turnitin论文检测系统的数据库有多大？',
+    'Reference要不要检测？'
+  ]
+  const aData = [
+    ' TurnitinUK是专为UK大学开发的，90%以上的UK大学都是使用TurnitinUK系统； Turnitin国际版与TurnitinUK的学生数据库有差别，因此检测的结果会不一样。 Turnitin国际版：使用范围最大，中国、美国、加拿大、澳洲、美洲、亚洲、欧洲（除英国外）、非洲、香港、澳门、台湾等世界上126个国家的学校都是使用这个系统来检测，Turnitin-UK版只有英国（UK）的大学使用。目前中国也有部分大学引进了Turnitin国际版系统来检测外语系的论文； 如果是在英国（UK）留学的请选择TurnitinUK来检测，在其他国家留学的请选择Turnitin国际版检测。也就是在英国留学的同学一定要选择TurnitinUK系统，不是在英国留学的都是选择Turnitin国际版； 如果需要到国际期刊（如EI、SCI）上发表论文，需要提前检测，请选择Turnitin国际版检测，Turnitin国际版还支持多语种检测，如中文、日语、西班牙语、德语、俄语、法语等小语种； 国内大学的中文学位论文检测，请使用国际版检测。',
+  ]
+
   return (
     <div className='home'>
       <div className="banner">
@@ -72,6 +94,61 @@ export default function Home () {
             <li>短时间内通过AIspring全球博士数据库匹配专家对论文进行打分评估</li>
           </ul>
         </div>
+      </div>
+      <div className='about-panel container'>
+        <Row>
+          <Col span={ 8 }>
+            <div className="oc-shadow text-center">
+              <img src={AboutList1} alt="" />
+              <div className="about-panel-title">Turnitin论文查重</div>
+              <p>是全球最权威的学术论文检测工具类系统，它通过大部分主流浏览器接入互联网，将用户提交的文稿与Turnitin背后海量的全球数据库和网页内容作比对，以很快的速度得出一个相似度比例和涵盖大量相关信息的‘原创性报告’给评审者，评审者能够根据这些Turnitin精确定位出的文稿中非原创的内容，对文稿整体的原创性作出一个客观判断
+              </p>
+            </div>
+          </Col>
+          <Col span={ 8 }>
+            <div className="oc-shadow text-center">
+              <img src={AboutList2} alt="" />
+              <div className="about-panel-title">Grammaly语法检测</div>
+              <p>
+                                Grammarly是顶级的在线语法纠正和校对工具
+它能够通过AI仿生语言学对论文进行单词拼写检查、标点符号纠正、语法错误修正、语气调整以及风格建议给出等；对学术写作来说，Grammarly还可以进行学术建议
+                            </p>
+            </div>
+          </Col>
+          <Col span={ 8 }>
+            <div className="oc-shadow text-center">
+              <img src={AboutList3} alt="" />
+              <div className="about-panel-title">AIspring全球博士打分系统</div>
+              <p>AIspring是于2019年底由斯坦福大学Keller&Ponic人工交互实验室发布的下一代智能数据库，我司通过Dr.Keller授权，获得首批全球使用权并应用于论文打分工作中。系统结合全球签约博士与大数据分析，对论文进行详实考核，并打出预估分数，为留学生提供精准的修改参考</p>
+            </div>
+          </Col>
+        </Row>
+      </div>
+      <div className="home-comment">
+        <div className="title text-center">用户评价</div>
+        <CommentList />
+        <Link to="/comments" className='more oc-btn'>MORE</Link>
+      </div>
+      <div className="qa container">
+        <Row>
+          <Col span={ 12 }>
+            <div className="oc-shadow q-content">
+              <ul>
+              { qData.map((item, idx) => 
+                <li
+                  key={item}
+                  className={idx === qaIndex ? 'open' : 'close'}
+                  onClick={ () => setQaIndex(idx) }
+                >{ item }</li>
+              )}
+              </ul>
+            </div>
+          </Col>
+          <Col span={ 12 }>
+            <div className="oc-shadow a-content">
+            </div>
+          </Col>
+        </Row>
       </div>
       <UseOccheck />
     </div>
