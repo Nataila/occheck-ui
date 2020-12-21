@@ -16,6 +16,7 @@ import Comments from './pages/Comments';
 import Check from './pages/Check';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
+import Profile from './pages/Profile';
 
 import { Layout } from 'antd';
 
@@ -41,6 +42,9 @@ function App() {
             </Route>
             <Route path="/comments">
               <Comments />
+            </Route>
+            <Route path="/profile">
+              <Profile />
             </Route>
             <Route path="/">
               <Home />

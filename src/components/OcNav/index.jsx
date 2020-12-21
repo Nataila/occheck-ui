@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import LOGO from '../../assets/imgs/logo-white.png'
 
 import './index.sass';
@@ -8,21 +8,23 @@ const OcNav = () => {
   return (
     <div className='nav-wrapper flex flex-between'>
       <div>
-        <img src={ LOGO } alt="" />
+        <a href="/">
+          <img src={ LOGO } alt="" />
+        </a>
       </div>
       <div className='nav-list-wrapper'>
         <ul>
           <li>
-            <Link to="/">首页</Link>
+            <NavLink to="/" exact={true} activeClassName='nav-selected'>首页</NavLink>
           </li>
           <li>
-            <Link to="/check">立即查重</Link>
+            <NavLink to="/check" activeClassName='nav-selected'>立即查重</NavLink>
           </li>
           <li>
-            <Link to="/comments">用户评价</Link>
+            <NavLink to="/comments" activeClassName='nav-selected'>用户评价</NavLink>
           </li>
           <li>
-            注册/登录
+            <NavLink to="/profile" activeClassName='nav-selected'>我的账户</NavLink>
           </li>
         </ul>
       </div>
