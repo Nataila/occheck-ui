@@ -26,6 +26,11 @@ const OcNav = () => {
           <li>
             <NavLink to="/profile" activeClassName='nav-selected'>我的账户</NavLink>
           </li>
+          <li>
+            <Link to="/signup"> 注册 </Link>
+            / 
+            <Link to="/signin"> 登录</Link>
+          </li>
         </ul>
       </div>
     </div>
