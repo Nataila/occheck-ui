@@ -17,6 +17,7 @@ import Check from './pages/Check';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
+import Deposit from './pages/Deposit';
 
 import { Layout } from 'antd';
 
@@ -45,6 +46,9 @@ function App() {
             </Route>
             <Route path="/profile">
               <Profile />
+            </Route>
+            <Route path="/deposit">
+              <Deposit />
             </Route>
             <Route path="/">
               <Home />
