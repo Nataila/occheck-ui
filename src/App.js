@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,11 +24,13 @@ import { Layout } from 'antd';
 const { Header, Footer, Content } = Layout;
 
 function App() {
+  const status = localStorage.getItem('user') === null ? false : true;
+  const [isLogin, setLogin] = useState(status)
   return (
     <Layout>
       <Router>
         <header>
-          <OcNav />
+          <OcNav isLogin={isLogin} />
         </header>
         <div>
           <Switch>

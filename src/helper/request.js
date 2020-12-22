@@ -45,35 +45,15 @@ axios.interceptors.request.use(config => {
   return config;
 });
 
+// 响应拦截器（处理错误）
 axios.interceptors.response.use(response => {
   hideLoading()
   return response;
-})
-
-// 响应拦截器（处理错误）
-// axios.interceptors.response.use(response => {
-//   endLoading()
-//   return response;
-// }, error => {
-//   const nextUri = router.currentRoute.fullPath;
-//   const status = error.response.status
-//   if (status === 401) {
-//     store.dispatch(ACTIONS_TYPES.CLEAN_USER)
-//     router.replace({
-//       path: 'login',
-//       query: {redirect: nextUri}
-//     })
-//   } else {
-//     const {data, result} = error.response.data
-//     if (result === 'failed') {
-//       Message({
-//         message: data.error_msg,
-//         type: 'error'
-//       })
-//     }
-//   }
-//   return Promise.reject(error)
-// });
+}, error => {
+  hideLoading()
+  console.log(error)
+  return Promise.reject(error)
+});
 
 function handleResponse(response) {
   return response.data;
@@ -86,10 +66,7 @@ export function httpPost(api, data = {}) {
   return axios.post(api, data)
     .then(handleResponse)
     .catch(error => {
-      console.log(error)
-      error.response.data.errors.forEach(item => {
-        message.error(item.msg);
-      })
+      message.error(error.response.data.errors[0].msg);
     })
 }
 

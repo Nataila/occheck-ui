@@ -5,13 +5,25 @@
 */
 
 import { API } from '../consts';
-import { httpGet } from '../helper/request';
+import { httpGet, httpPost } from '../helper/request';
 
 const getCommentList = async (params = {}) => {
   const res = await httpGet(API.COMMENTS.LIST, params);
   return res.data
 }
 
+const signUp = async (params = {}) => {
+  const res = await httpPost(API.SIGNUP, params);
+  return res
+}
+
+const signIn = async (params = {}) => {
+  const res = await httpPost(API.SIGNIN, params);
+  return res
+}
+
 export default {
-  commentList: getCommentList
+  commentList: getCommentList,
+  signUp,
+  signIn
 }

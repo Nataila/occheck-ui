@@ -4,7 +4,16 @@ import LOGO from '../../assets/imgs/logo-white.png'
 
 import './index.sass';
 
-const OcNav = () => {
+const OcNav = (props) => {
+  const isLogin = localStorage.getItem('user')
+  console.log(props)
+
+  function loginOut(e) {
+    e.preventDefault();
+    localStorage.removeItem('user');
+    isLogin = false;
+  }
+
   return (
     <div className='nav-wrapper flex flex-between'>
       <div>
@@ -23,14 +32,22 @@ const OcNav = () => {
           <li>
             <NavLink to="/comments" activeClassName='nav-selected'>用户评价</NavLink>
           </li>
+          {props.isLogin ?
+          <>
           <li>
             <NavLink to="/profile" activeClassName='nav-selected'>我的账户</NavLink>
           </li>
+          <li>
+            <a href="#" onClick={ loginOut }>退出</a>
+          </li>
+          </>
+          :
           <li>
             <Link to="/signup"> 注册 </Link>
             / 
             <Link to="/signin"> 登录</Link>
           </li>
+          }
         </ul>
       </div>
     </div>
