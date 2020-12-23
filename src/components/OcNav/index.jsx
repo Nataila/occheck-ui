@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import LOGO from '../../assets/imgs/logo-white.png'
 
 import './index.sass';
 
+import { loginContext } from '../../App';
+
 const OcNav = (props) => {
-  const isLogin = localStorage.getItem('user')
-  console.log(props)
+  const {isLogin, setLogin} = useContext(loginContext);
 
   function loginOut(e) {
     e.preventDefault();
     localStorage.removeItem('user');
-    isLogin = false;
+    setLogin(false)
   }
 
   return (

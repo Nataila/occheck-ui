@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './index.sass';
 
 import { Form, Input, Checkbox, Modal, Button, Select, Upload, message } from 'antd';
@@ -6,10 +6,12 @@ import { CaretDownOutlined, FileOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 
 import api from '../../api';
+import { loginContext } from '../../App';
 
 const { Option } = Select;
 
 export default function SignIn () {
+  const {isLogin, setLogin} = useContext(loginContext);
   let history = useHistory()
 
   async function onFinish(values) {
@@ -17,7 +19,8 @@ export default function SignIn () {
     if (res.message === 'Success') {
       localStorage.setItem('user', JSON.stringify(res.data));
       message.success('登录成功！');
-      history.push('/')
+      setLogin(true);
+      history.push('/');
     }
   }
 

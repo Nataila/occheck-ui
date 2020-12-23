@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,45 +23,49 @@ import { Layout } from 'antd';
 
 const { Header, Footer, Content } = Layout;
 
+export const loginContext = createContext(null)
+
 function App() {
   const status = localStorage.getItem('user') === null ? false : true;
   const [isLogin, setLogin] = useState(status)
   return (
-    <Layout>
-      <Router>
-        <header>
-          <OcNav isLogin={isLogin} />
-        </header>
-        <div>
-          <Switch>
-            <Route path="/signin">
-              <SignIn />
-            </Route>
-            <Route path="/signup">
-              <SignUp />
-            </Route>
-            <Route path="/check">
-              <Check />
-            </Route>
-            <Route path="/comments">
-              <Comments />
-            </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
-            <Route path="/deposit">
-              <Deposit />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
-        </div>
-        <footer>
-          <OcFooter />
-        </footer>
-      </Router>
-    </Layout>
+    <loginContext.Provider value={{ isLogin, setLogin }}>
+      <Layout>
+        <Router>
+          <header>
+            <OcNav isLogin={isLogin} />
+          </header>
+          <div>
+            <Switch>
+              <Route path="/signin">
+                <SignIn />
+              </Route>
+              <Route path="/signup">
+                <SignUp />
+              </Route>
+              <Route path="/check">
+                <Check />
+              </Route>
+              <Route path="/comments">
+                <Comments />
+              </Route>
+              <Route path="/profile">
+                <Profile />
+              </Route>
+              <Route path="/deposit">
+                <Deposit />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </div>
+          <footer>
+            <OcFooter />
+          </footer>
+        </Router>
+      </Layout>
+    </loginContext.Provider>
   )
 }
 

@@ -56,7 +56,6 @@ export default function Home () {
             <h1>就有 1 篇使用 OCcheck</h1>
             <h3>英美澳加留学生都在用的免费查重工具</h3>
           </div>
-          <img src={BannerImg1} alt="" />
         </div>
       </div>
       <div className="step container">
