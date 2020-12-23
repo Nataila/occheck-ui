@@ -5,7 +5,7 @@ import BannerImg from '../../assets/imgs/banner.png';
 
 export default function Check () {
   return (
-    <div class="check-root top-banner">
+    <div className="check-root top-banner">
       <div className="banner">
         <div className="banner-wrapper">
           <div className="banner-doc">

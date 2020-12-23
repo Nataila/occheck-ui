@@ -17,11 +17,15 @@ export default function UploadFile() {
   function selectChange (value) {
     console.log(value)
   }
+  const { token } = JSON.parse(localStorage.getItem('user'))
 
   const uploadProps = {
     name: 'file',
     multiple: true,
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    action: '/tasks/upload/',
+    headers: {
+      token,
+    },
     onChange(info) {
       const { status } = info.file;
       if (status !== 'uploading') {
