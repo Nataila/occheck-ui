@@ -22,8 +22,20 @@ const signIn = async (params = {}) => {
   return res
 }
 
+const taskNew = async (params = {}) => {
+  const res = await httpPost(API.TASK_NEW, params);
+  return res
+}
+
+const taskList = async (params = {}) => {
+  const res = await httpGet(API.TASK_LIST, params);
+  return res
+}
+
 export default {
   commentList: getCommentList,
   signUp,
-  signIn
+  signIn,
+  taskNew,
+  taskList,
 }

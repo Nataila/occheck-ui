@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Select, Upload, message } from 'antd';
 import { CaretDownOutlined, FileOutlined } from '@ant-design/icons';
 
 import turnitinImg from '../../assets/imgs/turnitin.png';
+import api from '../../api';
+
 import './index.sass';
 
 const { Dragger } = Upload;
 const { Option } = Select;
 
 export default function UploadFile() {
+
+  const [fileList, setFileList] = useState([]);
 
   const selectStyle = {
     width: '300px'
@@ -17,6 +21,15 @@ export default function UploadFile() {
   function selectChange (value) {
     console.log(value)
   }
+
+  async function submitHandle () {
+    const params = {file_path: fileList};
+    const res = await api.taskNew(params)
+    if (res.data == 'ok') {
+      message.success('上传文档成功后，将15-30分钟内，将结果发送至您的 OCcheck 账户邮箱')
+    }
+  }
+
   const { token } = JSON.parse(localStorage.getItem('user'))
 
   const uploadProps = {
@@ -32,9 +45,11 @@ export default function UploadFile() {
         console.log(info.file, info.fileList);
       }
       if (status === 'done') {
-        message.success(`${info.file.name} file uploaded successfully.`);
+        const fileId = info.file.response.data.id;
+        setFileList([...fileList, fileId])
+        message.success(`${info.file.name} 上传成功`);
       } else if (status === 'error') {
-        message.error(`${info.file.name} file upload failed.`);
+        message.error(`${info.file.name} 上传失败.`);
       }
     },
   };
@@ -78,7 +93,7 @@ export default function UploadFile() {
         </div>
       </div>
       <div className="text-center">
-        <a href="" className='oc-btn'>免费查重</a>
+        <button className='oc-btn' onClick={ submitHandle }>免费查重</button>
       </div>
       <div className='gray-text text-center'>上传文档成功后，将15-30分钟内，将结果发送至您的 OCcheck 账户邮箱</div>
     </div>

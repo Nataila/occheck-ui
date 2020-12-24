@@ -38,7 +38,7 @@ axios.interceptors.request.use(config => {
   //   config.url = BASE_URL + config.url;
   // }
   showLoading()
-  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  const userInfo = JSON.parse(localStorage.getItem('user'));
   if (userInfo) {
     config.headers.Token = `${userInfo.token}`;
   }
