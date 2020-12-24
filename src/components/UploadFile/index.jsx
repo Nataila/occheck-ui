@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Select, Upload, message } from 'antd';
 import { CaretDownOutlined, FileOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
 
 import turnitinImg from '../../assets/imgs/turnitin.png';
 import api from '../../api';
@@ -12,6 +13,7 @@ const { Option } = Select;
 
 export default function UploadFile() {
 
+  let history = useHistory()
   const [fileList, setFileList] = useState([]);
 
   const selectStyle = {
@@ -26,7 +28,8 @@ export default function UploadFile() {
     const params = {file_path: fileList};
     const res = await api.taskNew(params)
     if (res.data == 'ok') {
-      message.success('上传文档成功后，将15-30分钟内，将结果发送至您的 OCcheck 账户邮箱')
+      message.success('上传文档成功后，将15-30分钟内，将结果发送至您的 OCcheck 账户邮箱');
+      history.push('/profile');
     }
   }
 
