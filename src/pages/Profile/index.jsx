@@ -31,6 +31,7 @@ export default function Profile () {
   const [tasks, setTasks] = useState([]);
   const [isPwdModalVisible, setPwdModalVisible] = useState(false);
   const [isCountryModalVisible, setCountryModalVisible] = useState(false);
+  const [country, setCountry] = useState(1);
 
   useEffect(() => {
     async function fetchData() {
@@ -45,7 +46,7 @@ export default function Profile () {
   }
 
   const countrySelect = async value => {
-    console.log(value)
+    setCountry(value.value);
   }
 
 
@@ -72,13 +73,14 @@ export default function Profile () {
         <div className="title text-center">修改国家</div>
         <div className="logo-color-wrapper">
           <img src={ logoColor } alt="" />
-          <div className="oc-select-wrapper">
+          <div className="oc-select-wrapper" style={{ marginTop: 30}}>
             <OcSelect onChange={ countrySelect } defaultValue="澳洲">
               <OcOption value="0">美国</OcOption>
               <OcOption value="1">英国</OcOption>
               <OcOption value="2">澳洲</OcOption>
               <OcOption value="3">加拿大</OcOption>
             </OcSelect>
+            <button className="oc-btn-primary" style={{ width: '100%', marginTop: 20}}>提交</button>
           </div>
         </div>
       </div>
