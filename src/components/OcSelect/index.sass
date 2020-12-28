@@ -1,0 +1,19 @@
+.oc-select
+  .option-list
+    margin-top: 10px
+    height: 0
+    overflow: hidden
+    &.open
+      height: fit-content
+      transition: 0.4s linear
+  .oc-input
+    text-align: left
+    padding-left: 30px
+    & + .oc-input
+      margin-top: 10px
+  .oc-input.selected
+    border: 2px solid #2097FF
+    background: #FFF
+    display: flex
+    align-items: center
+    justify-content: space-between

@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 import api from '../../api';
 import { loginContext } from '../../App';
+import logoColor from '../../assets/imgs/logo-color.png';
 
 const { Option } = Select;
 
@@ -28,6 +29,9 @@ export default function SignIn () {
     <div className="signup-root">
       <div className="signup-content oc-shadow">
         <div className="title text-center">登录</div>
+        <div className="logo-color-wrapper">
+          <img src={ logoColor } alt="" />
+        </div>
         <Form
           onFinish={onFinish}
           style={{width: 'min-content', margin: '0 auto'}}>

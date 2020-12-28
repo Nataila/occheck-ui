@@ -3,6 +3,7 @@ import './index.sass';
 import { Form, Input, Checkbox, Modal, Button, Select, Upload, message } from 'antd';
 import { CaretDownOutlined, FileOutlined } from '@ant-design/icons';
 import { createBrowserHistory } from 'history'
+import logoColor from '../../assets/imgs/logo-color.png';
 import api from '../../api';
 
 const { Option } = Select;
@@ -50,6 +51,9 @@ export default function SignUp () {
     <div className="signup-root">
       <div className="signup-content oc-shadow">
         <div className="title text-center">创建一个账户</div>
+        <div className="logo-color-wrapper">
+          <img src={ logoColor } alt="" />
+        </div>
         <Form
           onFinish={onFinish}
           style={{width: 'min-content', margin: '0 auto'}}>

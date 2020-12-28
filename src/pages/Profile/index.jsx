@@ -6,7 +6,9 @@ import LogoColor from '../../assets/imgs/logo-color.png';
 import UseOccheck from '../../components/UseOccheck';
 import { useHistory } from 'react-router-dom';
 
-import { Form, Input, message } from 'antd';
+import { Form, Input, message, Modal, Button } from 'antd';
+import logoColor from '../../assets/imgs/logo-color.png';
+import { OcSelect, OcOption } from '../../components/OcSelect';
 
 import api from '../../api';
 
@@ -27,6 +29,8 @@ export default function Profile () {
   let history = useHistory()
 
   const [tasks, setTasks] = useState([]);
+  const [isPwdModalVisible, setPwdModalVisible] = useState(false);
+  const [isCountryModalVisible, setCountryModalVisible] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -40,6 +44,10 @@ export default function Profile () {
     return flag === 4 ? '已发送至账户邮箱' : '上传成功，请耐心等待'
   }
 
+  const countrySelect = async value => {
+    console.log(value)
+  }
+
 
   const onFinish = async values => {
     const res = await api.commentNew(values);
@@ -49,8 +57,82 @@ export default function Profile () {
     }
   }
 
+  const onPwdFinish = async values => {
+  }
+
   return (
     <div className="profile-root top-banner">
+      <Modal
+        visible={isCountryModalVisible}
+        footer={ null }
+        header={ null }
+        onCancel={() => {setCountryModalVisible(false)}}
+      >
+        <div className="signup-content" style={{ height: 'fit-content'}}>
+        <div className="title text-center">修改国家</div>
+        <div className="logo-color-wrapper">
+          <img src={ logoColor } alt="" />
+          <div className="oc-select-wrapper">
+            <OcSelect onChange={ countrySelect } defaultValue="澳洲">
+              <OcOption value="0">美国</OcOption>
+              <OcOption value="1">英国</OcOption>
+              <OcOption value="2">澳洲</OcOption>
+              <OcOption value="3">加拿大</OcOption>
+            </OcSelect>
+          </div>
+        </div>
+      </div>
+      </Modal>
+
+      <Modal
+        visible={isPwdModalVisible}
+        footer={ null }
+        header={ null }
+        onCancel={() => {setPwdModalVisible(false)}}
+      >
+        <div className="signup-content" style={{ height: 'fit-content'}}>
+        <div className="title text-center">修改密码</div>
+        <div className="logo-color-wrapper">
+          <img src={ logoColor } alt="" />
+        </div>
+        <Form
+          onFinish={onPwdFinish}
+          style={{width: 'min-content', margin: '0 auto'}}>
+          <Form.Item
+            name="oldPassword"
+            rules={[{ required: true, message: '请输入密码' }]}
+          >
+          <Input
+            type="password"
+            className="signup-input"
+            placeholder="请输入旧密码"
+            name='password' />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: '请输入密码' }]}
+          >
+          <Input
+            type="password"
+            className="signup-input"
+            placeholder="请输入新密码"
+            name='password1' />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: '请输入密码' }]}
+          >
+          <Input
+            type="password"
+            className="signup-input"
+            placeholder="请确认新密码"
+            name='password2' />
+          </Form.Item>
+          <button className="oc-btn-primary submit-btn" htmltype="submit">确认修改</button>
+        </Form>
+      </div>
+      </Modal>
+
       <div className="banner">
         <div className="banner-wrapper">
           <div className="banner-doc">
@@ -80,17 +162,17 @@ export default function Profile () {
         <div className="oc-shadow profile-panel">
           <div className="flex flex-between profile-item">
             <div>邮箱: nataila@163.com</div>
-            <div className="modify bc">修改</div>
+            <div className="modify bc"></div>
           </div>
 
           <div className="flex flex-between profile-item">
             <div>密码:  ******</div>
-            <div className="modify bc">修改</div>
+            <div className="modify bc" onClick={() => {setPwdModalVisible(true)}}>修改</div>
           </div>
 
           <div className="flex flex-between profile-item">
             <div>国家: 美国</div>
-            <div className="modify bc">修改</div>
+            <div className="modify bc" onClick={() => {setCountryModalVisible(true)}}>修改</div>
           </div>
         </div>
       </div>
