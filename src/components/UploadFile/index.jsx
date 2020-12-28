@@ -33,7 +33,8 @@ export default function UploadFile() {
     }
   }
 
-  const { token } = JSON.parse(localStorage.getItem('user'))
+  const user = localStorage.getItem('user');
+  const { token } = user ? JSON.parse(user) : '';
 
   const uploadProps = {
     name: 'file',

@@ -13,6 +13,7 @@ export const API = {
   TASK_NEW: '/tasks/new/',
   TASK_LIST: '/tasks/list/',
   COMMENTS: {
-    LIST: '/comments/list/'
+    LIST: '/comments/list/',
+    NEW: '/comments/new/',
   }
 };

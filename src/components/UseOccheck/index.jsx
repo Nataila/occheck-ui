@@ -14,7 +14,7 @@ export default function UseOccheck() {
               <div style={{fontSize: '16px'}}>英美澳加留学生都在用的免费查重工具</div>
             </div>
           </div>
-          <button className="to-check-btn">免费查重</button>
+          <a href="/check" className="to-check-btn">免费查重</a>
         </div>
       </div>
     </div>

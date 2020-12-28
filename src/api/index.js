@@ -27,6 +27,11 @@ const taskNew = async (params = {}) => {
   return res
 }
 
+const commentNew = async (params = {}) => {
+  const res = await httpPost(API.COMMENTS.NEW, params);
+  return res
+}
+
 const taskList = async (params = {}) => {
   const res = await httpGet(API.TASK_LIST, params);
   return res
@@ -38,4 +43,5 @@ export default {
   signIn,
   taskNew,
   taskList,
+  commentNew,
 }

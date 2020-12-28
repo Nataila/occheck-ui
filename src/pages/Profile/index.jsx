@@ -4,6 +4,9 @@ import './index.sass';
 import BannerImg from '../../assets/imgs/banner.png';
 import LogoColor from '../../assets/imgs/logo-color.png';
 import UseOccheck from '../../components/UseOccheck';
+import { useHistory } from 'react-router-dom';
+
+import { Form, Input, message } from 'antd';
 
 import api from '../../api';
 
@@ -21,6 +24,8 @@ export default function Profile () {
     paddingTop: 20
   }
 
+  let history = useHistory()
+
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -33,6 +38,15 @@ export default function Profile () {
 
   function statusStr(flag) {
     return flag === 4 ? '已发送至账户邮箱' : '上传成功，请耐心等待'
+  }
+
+
+  const onFinish = async values => {
+    const res = await api.commentNew(values);
+    if (res.data == 'ok') {
+      history.push('/comments');
+      message.success('评价成功！');
+    }
   }
 
   return (
@@ -97,6 +111,35 @@ export default function Profile () {
       </div>
       <div className="container">
         <div className="p-sub-title">您的评价</div>
+        <Form
+          name="comment"
+          className="comment-form"
+          onFinish={onFinish}
+        >
+          <Form.Item
+            name="name"
+            rules={[{ required: true, message: '此项为必填项' }]}
+          >
+            <Input placeholder="name" className='oc-input' />
+          </Form.Item>
+          <Form.Item
+            name="location"
+            rules={[{ required: true, message: '此项为必填项' }]}
+          >
+            <Input
+              type="text"
+              placeholder="University"
+              className='oc-input'
+            />
+          </Form.Item>
+          <Form.Item
+            name="content"
+            rules={[{ required: true, message: '此项为必填项' }]}
+          >
+            <Input.TextArea className='content-textarea' rows={7} />
+          </Form.Item>
+          <button className="oc-btn-primary" htmltype="submit">发表评价</button>
+        </Form>
       </div>
       <UseOccheck />
     </div>

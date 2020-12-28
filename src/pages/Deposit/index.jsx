@@ -3,6 +3,8 @@ import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 
 import './index.sass';
 import QrCode from '../../assets/imgs/qrcode.jpg';
+import pay1Img from '../../assets/imgs/pay1.png';
+import pay2Img from '../../assets/imgs/pay2.png';
 
 
 export default function Deposit() {
@@ -28,18 +30,24 @@ export default function Deposit() {
       </div>
       <div className="deposit-content container flex">
         <div className="to-service">
+          <div className="pay-img-wrapper">
+            <img src={ pay1Img } alt="" class='pay-img'/>
+          </div>
           <div className="to-service-bottom">
-            <div className="num">01</div>
-            <p className='bc'>添加客服，免费升级无限查重账户</p>
+            <div className="num bc">01</div>
+            <p className='bc' style={{ fontSize: 24, fontWeight: 'bold'}}>添加客服，免费升级无限查重账户</p>
             <div className="service-qrcode">
               <img src={ QrCode } alt="" />
             </div>
           </div>
         </div>
         <div className="buy">
+          <div className="pay-img-wrapper">
+            <img src={ pay2Img } alt="" class='pay-img'/>
+          </div>
           <div className="buy-bottom">
             <div className="num">02</div>
-            <p>直接购买次数</p>
+            <p style={{ fontSize: 24, fontWeight: 'bold'}}>直接购买次数</p>
             <div className='flex buy-wrapper'>
               <span className="deposit-subtitle">购买次数</span>
               <div className='flex counter'>
@@ -55,7 +63,7 @@ export default function Deposit() {
             <div className="flex price">
               <span className="deposit-subtitle">所需价格</span>
               <span className="rmb">￥</span>
-              <input type="text" value={ count * 50 } />
+              <input type="text" style={{ width:220}} value={ count * 50 } />
             </div>
             <div>
               <button className="oc-btn-primary buy-btn">购买</button>
