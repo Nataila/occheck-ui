@@ -3,6 +3,7 @@ import './index.sass';
 import { Form, Input, Checkbox, Modal, Button, Select, Upload, message } from 'antd';
 import { CaretDownOutlined, FileOutlined } from '@ant-design/icons';
 import { createBrowserHistory } from 'history'
+import { OcSelect, OcOption } from '../../components/OcSelect';
 import logoColor from '../../assets/imgs/logo-color.png';
 import api from '../../api';
 
@@ -12,12 +13,7 @@ const history = createBrowserHistory()
 
 export default function SignUp () {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [signUpForm, setSignUpForm] = useState({
-    email: '',
-    password: '',
-    password2: '',
-    country: 0,
-  })
+  const [country, setCountry] = useState(0)
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -31,20 +27,19 @@ export default function SignUp () {
     setIsModalVisible(false);
   };
 
-  const formChangeHandle = e => {
-    console.log(e.target.name);
-    setSignUpForm({
-      ...signUpForm,
-      [e.target.name]: e.target.value
-    })
-  }
 
   async function onFinish(values) {
+    values['country'] = country
     const res = await api.signUp(values);
     if (res.message === 'Success') {
       message.success('注册成功！');
       history.push('/');
     }
+  }
+
+  const countrySelect = v => {
+    console.log(v.value)
+    setCountry(parseInt(v.value))
   }
 
   return ( 
@@ -78,9 +73,12 @@ export default function SignUp () {
             placeholder="Repeat Your Password"
             name='password' />
           </Form.Item>
-          <Form.Item name="remember" valuePropName="checked">
-            <Checkbox>记住密码</Checkbox>
-          </Form.Item>
+          <OcSelect onChange={ countrySelect } defaultValue="美国">
+            <OcOption value="0">美国</OcOption>
+            <OcOption value="1">英国</OcOption>
+            <OcOption value="2">澳洲</OcOption>
+            <OcOption value="3">加拿大</OcOption>
+          </OcSelect>
           <button className="oc-btn-primary submit-btn" htmlType="submit">注册</button>
           <p className="text-center"> 通过创建一个帐户，我接受<a onClick={showModal} href="javascript:void(0)">OC check 的条款或服务</a></p>
         </Form>
