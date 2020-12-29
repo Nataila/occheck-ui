@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './index.sass';
 
 import BannerImg from '../../assets/imgs/banner.png';
-import LogoColor from '../../assets/imgs/logo-color.png';
 import UseOccheck from '../../components/UseOccheck';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import { Form, Input, message, Modal, Button } from 'antd';
-import logoColor from '../../assets/imgs/logo-color.png';
 import { OcSelect, OcOption } from '../../components/OcSelect';
+import { toCountry } from '../../helper/filters';
+import LogoColor from '../../assets/imgs/logo-color.png';
 
 import api from '../../api';
 
@@ -32,11 +32,20 @@ export default function Profile () {
   const [isPwdModalVisible, setPwdModalVisible] = useState(false);
   const [isCountryModalVisible, setCountryModalVisible] = useState(false);
   const [country, setCountry] = useState(1);
+  const [loginUser, setLoginUser] = useState({});
 
   useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (!user) {
+      history.push('/signin');
+      return false
+    }
+     
     async function fetchData() {
       const res = await api.taskList();
       setTasks(res.data);
+      const me = await api.myProfile();
+      setLoginUser(me.data);
     }
     fetchData();
   }, []);
@@ -72,9 +81,9 @@ export default function Profile () {
         <div className="signup-content" style={{ height: 'fit-content'}}>
         <div className="title text-center">修改国家</div>
         <div className="logo-color-wrapper">
-          <img src={ logoColor } alt="" />
+          <img src={ LogoColor } alt="" />
           <div className="oc-select-wrapper" style={{ marginTop: 30}}>
-            <OcSelect onChange={ countrySelect } defaultValue="澳洲">
+            <OcSelect onChange={ countrySelect } defaultValue={ toCountry(loginUser.country) }>
               <OcOption value="0">美国</OcOption>
               <OcOption value="1">英国</OcOption>
               <OcOption value="2">澳洲</OcOption>
@@ -95,7 +104,7 @@ export default function Profile () {
         <div className="signup-content" style={{ height: 'fit-content'}}>
         <div className="title text-center">修改密码</div>
         <div className="logo-color-wrapper">
-          <img src={ logoColor } alt="" />
+          <img src={ LogoColor } alt="" />
         </div>
         <Form
           onFinish={onPwdFinish}
@@ -147,23 +156,23 @@ export default function Profile () {
       <div className="container">
         <div className="title text-center" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>欢迎
           <img src={LogoColor} style={{margin: '0 10px'}} alt="" />
-        用户，nataila@163.com</div>
+        用户，{ loginUser.email }</div>
       </div>
       <div className="container">
         <div className="flex last-count-wrapper">
-          <div className="last-count">3<span style={{ fontSize: '40px'}}>次</span></div>
+          <div className="last-count">{ loginUser.query_count }<span style={{ fontSize: '40px'}}>次</span></div>
           <div className="last-count-text">
             <p style={p1Style}>您还可以免费查重的次数</p>
             <p style={p2Style}>请添加客服获取更多免费查重机会</p>
           </div>
-          <div className="oc-btn oc-btn-primary" style={{ marginTop: 20}}>增加免费次数</div>
+          <Link to="/deposit" className="oc-btn oc-btn-primary" style={{ marginTop: 20}}>增加免费次数</Link>
         </div>
       </div>
       <div className="container">
         <div className="p-sub-title">基本信息</div>
         <div className="oc-shadow profile-panel">
           <div className="flex flex-between profile-item">
-            <div>邮箱: nataila@163.com</div>
+            <div>邮箱: { loginUser.email }</div>
             <div className="modify bc"></div>
           </div>
 
@@ -173,7 +182,7 @@ export default function Profile () {
           </div>
 
           <div className="flex flex-between profile-item">
-            <div>国家: 美国</div>
+            <div>国家: { toCountry(loginUser.country) }</div>
             <div className="modify bc" onClick={() => {setCountryModalVisible(true)}}>修改</div>
           </div>
         </div>

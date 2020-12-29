@@ -21,7 +21,9 @@ export default function Comments () {
           <img src={BannerImg} alt="" />
         </div>
       </div>
-      <CommentList />
+      <div style={{ margin: '100px 0'}}>
+        <CommentList/>
+      </div>
       <UseOccheck />
     </div>
   )

@@ -37,6 +37,16 @@ const taskList = async (params = {}) => {
   return res
 }
 
+const myProfile = async (params = {}) => {
+  const res = await httpGet(API.MY_PROFILE, params);
+  return res
+}
+
+const buyCount = async (params = {}) => {
+  const res = await httpPost(API.ACCOUNT_BUY, params);
+  return res
+}
+
 export default {
   commentList: getCommentList,
   signUp,
@@ -44,4 +54,6 @@ export default {
   taskNew,
   taskList,
   commentNew,
+  myProfile,
+  buyCount,
 }

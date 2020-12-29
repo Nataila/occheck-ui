@@ -15,16 +15,17 @@ export default function UploadFile() {
 
   let history = useHistory()
   const [fileList, setFileList] = useState([]);
+  const user = localStorage.getItem('user');
 
   const selectStyle = {
     width: '300px'
   }
 
-  function selectChange (value) {
-    console.log(value)
-  }
-
   async function submitHandle () {
+    if (!user) {
+      history.push('/signin');
+      return false
+    }
     const params = {file_path: fileList};
     const res = await api.taskNew(params)
     if (res.data == 'ok') {
@@ -33,8 +34,10 @@ export default function UploadFile() {
     }
   }
 
-  const user = localStorage.getItem('user');
   const { token } = user ? JSON.parse(user) : '';
+
+  function selectChange (value) {
+  }
 
   const uploadProps = {
     name: 'file',
@@ -45,8 +48,12 @@ export default function UploadFile() {
     },
     onChange(info) {
       const { status } = info.file;
+      console.log(status)
       if (status !== 'uploading') {
-        console.log(info.file, info.fileList);
+        if (!user) {
+          history.push('/signin');
+          return false;
+        }
       }
       if (status === 'done') {
         const fileId = info.file.response.data.id;

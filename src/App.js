@@ -2,7 +2,8 @@ import React, { useState, createContext } from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 
 import 'antd/dist/antd.css';
@@ -25,6 +26,19 @@ const { Header, Footer, Content } = Layout;
 
 export const loginContext = createContext(null)
 
+function PrivateRoute(props) {
+  const user = localStorage.getItem('user');
+  if (!user) {
+    return (
+      <Redirect from={props.path} to='/signin' />
+    )
+  } else {
+    return (
+      <Route path={props.path} component={props.component} />
+    )
+  }
+}
+
 function App() {
   const status = localStorage.getItem('user') === null ? false : true;
   const [isLogin, setLogin] = useState(status)
@@ -43,18 +57,12 @@ function App() {
               <Route path="/signup">
                 <SignUp />
               </Route>
-              <Route path="/check">
-                <Check />
-              </Route>
+              <PrivateRoute path="/check" component={ Check } />
               <Route path="/comments">
                 <Comments />
               </Route>
-              <Route path="/profile">
-                <Profile />
-              </Route>
-              <Route path="/deposit">
-                <Deposit />
-              </Route>
+              <PrivateRoute path="/profile" component={ Profile } />
+              <PrivateRoute path="/deposit" component={ Deposit } />
               <Route path="/">
                 <Home />
               </Route>
