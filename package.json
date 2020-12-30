@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.9.1",
     "axios": "^0.21.0",
+    "js-file-download": "^0.4.12",
     "node-sass": "4.14.1",
     "qrcode.react": "^1.0.0",
     "react": "^17.0.1",
@@ -41,5 +42,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://192.168.31.173:8016/api/v1/"
+  "proxy": "http://127.0.0.1:8016/api/v1/"
 }
