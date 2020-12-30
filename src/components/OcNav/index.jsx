@@ -8,6 +8,17 @@ import { loginContext } from '../../App';
 
 const OcNav = (props) => {
   const {isLogin, setLogin} = useContext(loginContext);
+  const [isSuperuser, setSuperuser] = useState(false);
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      const { group } = JSON.parse(user);
+      if (parseInt(group) == 1) {
+        setSuperuser(true)
+      }
+    }
+  }, [])
 
   function loginOut(e) {
     e.preventDefault();
@@ -33,6 +44,12 @@ const OcNav = (props) => {
           <li>
             <NavLink to="/comments" activeClassName='nav-selected'>用户评价</NavLink>
           </li>
+          {isSuperuser ? 
+            <li>
+              <NavLink to="/admin" activeClassName='nav-selected'>后台管理</NavLink>
+            </li>
+            : <> </>
+          }
           {props.isLogin ?
           <>
           <li>

@@ -12,10 +12,13 @@ export const API = {
   SIGNUP: '/account/signup/',
   TASK_NEW: '/tasks/new/',
   TASK_LIST: '/tasks/list/',
+  TASK_UPDATE: '/tasks/update/',
+  TASK_DETAIL: '/tasks/detail/',
   MY_PROFILE: '/account/me',
   COMMENTS: {
     LIST: '/comments/list/',
     NEW: '/comments/new/',
   },
   ACCOUNT_BUY: '/account/buy',
+  FILE_DOWNLOAD: '/download/'
 };

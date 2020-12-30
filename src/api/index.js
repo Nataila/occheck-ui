@@ -4,6 +4,7 @@
 * Created at2020/12/08
 */
 
+import Axios from "axios";
 import { API } from '../consts';
 import { httpGet, httpPost } from '../helper/request';
 
@@ -37,13 +38,34 @@ const taskList = async (params = {}) => {
   return res
 }
 
+const taskDetail = async (fid) => {
+  console.log(fid)
+  const res = await httpGet(`${API.TASK_DETAIL}${fid}/`);
+  return res
+}
+
 const myProfile = async (params = {}) => {
   const res = await httpGet(API.MY_PROFILE, params);
   return res
 }
 
+
 const buyCount = async (params = {}) => {
   const res = await httpPost(API.ACCOUNT_BUY, params);
+  return res
+}
+
+const taskUpdate = async (params = {}) => {
+  const res = await httpPost(API.TASK_UPDATE, params);
+  return res
+}
+
+const fileDownload = async (fid, params = {}) => {
+  const res = await Axios({
+    url: `${API.FILE_DOWNLOAD}${fid}/`,
+    method: 'GET',
+    responseType: 'blob', // Important
+  })
   return res
 }
 
@@ -56,4 +78,7 @@ export default {
   commentNew,
   myProfile,
   buyCount,
+  fileDownload,
+  taskDetail,
+  taskUpdate
 }

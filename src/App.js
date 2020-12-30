@@ -19,6 +19,7 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
 import Deposit from './pages/Deposit';
+import Admin from './pages/Admin';
 
 import { Layout } from 'antd';
 
@@ -63,6 +64,9 @@ function App() {
               </Route>
               <PrivateRoute path="/profile" component={ Profile } />
               <PrivateRoute path="/deposit" component={ Deposit } />
+              <Route path="/admin">
+                <Admin />
+              </Route>
               <Route path="/">
                 <Home />
               </Route>
