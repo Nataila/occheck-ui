@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table } from 'antd';
+import { Table, Space, Button } from 'antd';
 
 import api from '../../../api';
 import './index.sass';
@@ -31,6 +31,16 @@ export default function CommentList() {
       title: '位置',
       dataIndex: 'location',
       key: 'location',
+    },
+    {
+      title: '审核',
+      key: 'audit',
+      render: (text, record) => {
+        <Space size='middle'>
+           <Button type="primary">通过</Button>
+           <Button type="primary" danger>拒绝</Button>
+        </Space>
+      }
     },
   ]
 
