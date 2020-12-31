@@ -13,6 +13,16 @@ const getCommentList = async (params = {}) => {
   return res.data
 }
 
+const userList = async (params = {}) => {
+  const res = await httpGet(API.USER_LIST, params);
+  return res.data
+}
+
+const userDetail = async (uid, params = {}) => {
+  const res = await httpGet(`${API.USER_DETAIL}${uid}`, params);
+  return res.data
+}
+
 const signUp = async (params = {}) => {
   const res = await httpPost(API.SIGNUP, params);
   return res
@@ -35,6 +45,11 @@ const commentNew = async (params = {}) => {
 
 const commentUpdate = async (cid, params = {}) => {
   const res = await httpPut(`${API.COMMENTS.UPDATE}${cid}/`, params);
+  return res
+}
+
+const userUpdate = async (uid, params = {}) => {
+  const res = await httpPut(`${API.USER_UPDATE}${uid}/`, params);
   return res
 }
 
@@ -86,5 +101,8 @@ export default {
   buyCount,
   fileDownload,
   taskDetail,
-  taskUpdate
+  taskUpdate,
+  userList,
+  userDetail,
+  userUpdate,
 }

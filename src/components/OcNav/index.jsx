@@ -18,12 +18,12 @@ const OcNav = (props) => {
         setSuperuser(true)
       }
     }
-  }, [])
+  }, [isLogin])
 
   function loginOut(e) {
     e.preventDefault();
     localStorage.removeItem('user');
-    setLogin(false)
+    setLogin(false);
   }
 
   return (
@@ -44,13 +44,13 @@ const OcNav = (props) => {
           <li>
             <NavLink to="/comments" activeClassName='nav-selected'>用户评价</NavLink>
           </li>
-          {isSuperuser ? 
+          {isSuperuser && isLogin ? 
             <li>
               <NavLink to="/admin" activeClassName='nav-selected'>后台管理</NavLink>
             </li>
             : <> </>
           }
-          {props.isLogin ?
+          {isLogin ?
           <>
           <li>
             <NavLink to="/profile" activeClassName='nav-selected'>我的账户</NavLink>

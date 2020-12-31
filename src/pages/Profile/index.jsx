@@ -7,7 +7,7 @@ import { useHistory, Link } from 'react-router-dom';
 
 import { Form, Input, message, Modal, Button } from 'antd';
 import { OcSelect, OcOption } from '../../components/OcSelect';
-import { toCountry } from '../../helper/filters';
+import { countryDisplay } from '../../helper/filters';
 import LogoColor from '../../assets/imgs/logo-color.png';
 
 import api from '../../api';
@@ -91,7 +91,7 @@ export default function Profile () {
         <div className="logo-color-wrapper">
           <img src={ LogoColor } alt="" />
           <div className="oc-select-wrapper" style={{ marginTop: 30}}>
-            <OcSelect onChange={ countrySelect } defaultValue={ toCountry(loginUser.country) }>
+            <OcSelect onChange={ countrySelect } defaultValue={ countryDisplay(loginUser.country) }>
               <OcOption value="0">美国</OcOption>
               <OcOption value="1">英国</OcOption>
               <OcOption value="2">澳洲</OcOption>
@@ -190,7 +190,7 @@ export default function Profile () {
           </div>
 
           <div className="flex flex-between profile-item">
-            <div>国家: { toCountry(loginUser.country) }</div>
+            <div>国家: { countryDisplay(loginUser.country) }</div>
             <div className="modify bc" onClick={() => {setCountryModalVisible(true)}}>修改</div>
           </div>
         </div>

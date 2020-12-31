@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './index.sass';
 import { Layout, Menu } from 'antd';
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
@@ -16,12 +16,16 @@ import CommentList from './CommentList';
 import TaskList from './TaskList';
 import TaskDetail from './TaskDetail';
 import UserList from './UserList';
+import UserDetail from './UserDetail';
 
 const { Header, Content, Footer, Sider } = Layout;
 
 
 export default function Admin() {
 	let { path, url } = useRouteMatch();
+  const [key, setkey] = useState('2')
+  const handleClick = e => {
+  };
   return (
   	<Layout>
   	  <Sider
@@ -35,7 +39,12 @@ export default function Admin() {
   	    }}
   	  >
   	    <div className="logo" />
-  	    <Menu theme="dark" mode="inline" defaultSelectedKeys={['2']}>
+  	    <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={['2']}
+          onClick={handleClick}
+        >
   	      <Menu.Item key="1">
             <Link to={`${url}/users`}>用户列表</Link>
   	      </Menu.Item>
@@ -66,6 +75,9 @@ export default function Admin() {
               </Route>
               <Route path={`${path}/tasks/`}>
                 <TaskList />
+              </Route>
+              <Route path={`${path}/users/:uid`}>
+                <UserDetail />
               </Route>
               <Route path={`${path}/users/`}>
                 <UserList />

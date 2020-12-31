@@ -57,6 +57,6 @@ export default function CommentList() {
   ]
 
   return (
-    <Table dataSource={commentList} columns={columns} />
+    <Table dataSource={commentList} columns={columns} rowKey="name" />
   )
 }
