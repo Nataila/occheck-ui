@@ -13,7 +13,6 @@ import {
 } from "react-router-dom";
 
 import CommentList from './CommentList';
-import CommentNew from './CommentNew';
 import TaskList from './TaskList';
 import TaskDetail from './TaskDetail';
 import UserList from './UserList';
@@ -50,11 +49,6 @@ export default function Admin() {
               评论审核
             </Link>
   	      </Menu.Item>
-  	      <Menu.Item key="4">
-            <Link to={`${url}/comments/new/`}>
-              添加评论
-            </Link>
-  	      </Menu.Item>
   	    </Menu>
   	  </Sider>
   	  <Layout>
@@ -63,9 +57,6 @@ export default function Admin() {
             <Switch>
               <Route exact path={path}>
                 <TaskList />
-              </Route>
-              <Route path={`${path}/comments/new/`}>
-                <CommentNew />
               </Route>
               <Route path={`${path}/comments/`}>
                 <CommentList />

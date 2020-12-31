@@ -18,6 +18,7 @@ export const API = {
   COMMENTS: {
     LIST: '/comments/list/',
     NEW: '/comments/new/',
+    UPDATE: '/comments/'
   },
   ACCOUNT_BUY: '/account/buy',
   FILE_DOWNLOAD: '/download/'

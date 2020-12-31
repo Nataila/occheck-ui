@@ -6,7 +6,7 @@
 
 import Axios from "axios";
 import { API } from '../consts';
-import { httpGet, httpPost } from '../helper/request';
+import { httpGet, httpPost, httpPut } from '../helper/request';
 
 const getCommentList = async (params = {}) => {
   const res = await httpGet(API.COMMENTS.LIST, params);
@@ -30,6 +30,11 @@ const taskNew = async (params = {}) => {
 
 const commentNew = async (params = {}) => {
   const res = await httpPost(API.COMMENTS.NEW, params);
+  return res
+}
+
+const commentUpdate = async (cid, params = {}) => {
+  const res = await httpPut(`${API.COMMENTS.UPDATE}${cid}/`, params);
   return res
 }
 
@@ -76,6 +81,7 @@ export default {
   taskNew,
   taskList,
   commentNew,
+  commentUpdate,
   myProfile,
   buyCount,
   fileDownload,

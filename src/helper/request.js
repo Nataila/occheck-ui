@@ -87,3 +87,14 @@ export function httpGet(api, data = {}) {
   const request = () => axios.get(api, { params: data }).then(handleResponse);
   return request();
 }
+
+export function httpPut(api, data = {}) {
+  data = {
+    ...data
+  };
+  return axios.put(api, data)
+    .then(handleResponse)
+    .catch(error => {
+      message.error(error.response.data.errors[0].msg);
+    })
+}

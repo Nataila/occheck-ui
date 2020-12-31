@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Space, Button } from 'antd';
+import { Table, Space, Button, message } from 'antd';
 
 import api from '../../../api';
 import './index.sass';
@@ -15,6 +15,18 @@ export default function CommentList() {
   useEffect(() => {
     getCommentList()
   }, [])
+
+  async function updateStatus(cid, status) {
+    const res = await api.commentUpdate(cid, {status})
+    if (res.data === 'ok') {
+      let msg = '审核成功, 已拒绝'
+      if (status === 1) {
+        msg = '审核成功, 已通过'
+      }
+      message.success(msg);
+      getCommentList()
+    }
+  }
 
   const columns = [
     {
@@ -33,14 +45,14 @@ export default function CommentList() {
       key: 'location',
     },
     {
-      title: '审核',
-      key: 'audit',
-      render: (text, record) => {
-        <Space size='middle'>
-           <Button type="primary">通过</Button>
-           <Button type="primary" danger>拒绝</Button>
+      title: 'Action',
+      key: 'action',
+      render: (text, record) => (
+        <Space size="middle">
+          <Button type='primary' onClick={() => {updateStatus(record._id.$oid, 1)}}>通过</Button>
+          <Button type='primary' danger onClick={() => {updateStatus(record._id.$oid, 2)}}>拒绝</Button>
         </Space>
-      }
+      ),
     },
   ]
 
