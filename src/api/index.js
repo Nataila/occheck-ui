@@ -18,6 +18,16 @@ const userList = async (params = {}) => {
   return res.data
 }
 
+const sendCode = async (params = {}) => {
+  const res = await httpPost(API.SEND_CODE, params);
+  return res.data
+}
+
+const forgetPwd = async (params = {}) => {
+  const res = await httpPost(API.FORGET_PWD, params);
+  return res
+}
+
 const userDetail = async (uid, params = {}) => {
   const res = await httpGet(`${API.USER_DETAIL}${uid}`, params);
   return res.data
@@ -105,4 +115,6 @@ export default {
   userList,
   userDetail,
   userUpdate,
+  sendCode,
+  forgetPwd,
 }

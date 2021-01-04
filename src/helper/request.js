@@ -67,6 +67,7 @@ export function httpPost(api, data = {}) {
     .then(handleResponse)
     .catch(error => {
       message.error(error.response.data.errors[0].msg);
+      return {'data': 'failed'}
     })
 }
 

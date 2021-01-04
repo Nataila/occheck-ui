@@ -8,11 +8,13 @@
 export const BASE_URL = process.env.REACT_APP_API_URI;
 
 export const API = {
+  SEND_CODE: '/account/send/mail/code/',
   SIGNIN: '/account/signin/',
   SIGNUP: '/account/signup/',
   USER_LIST: '/account/list/',
   USER_DETAIL: '/account/detail/',
   USER_UPDATE: '/account/update/',
+  FORGET_PWD: '/account/forget/',
   TASK_NEW: '/tasks/new/',
   TASK_LIST: '/tasks/list/',
   TASK_UPDATE: '/tasks/update/',

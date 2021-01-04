@@ -20,6 +20,7 @@ import SignIn from './pages/SignIn';
 import Profile from './pages/Profile';
 import Deposit from './pages/Deposit';
 import Admin from './pages/Admin';
+import ForgetPwd from './pages/ForgetPwd';
 
 import { Layout } from 'antd';
 
@@ -57,6 +58,9 @@ function App() {
               </Route>
               <Route path="/signup">
                 <SignUp />
+              </Route>
+              <Route path="/forget">
+                <ForgetPwd />
               </Route>
               <PrivateRoute path="/check" component={ Check } />
               <Route path="/comments">
