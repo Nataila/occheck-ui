@@ -22,6 +22,7 @@ export default function TaskDetail() {
   const { token } = user ? JSON.parse(user) : '';
 
   const submitHandle = async () => {
+    console.log(form)
     const res = await api.taskUpdate(form)
     if (res.data === 'ok') {
       message.success('上传成功');
@@ -54,18 +55,36 @@ export default function TaskDetail() {
   const props2 = {...props, data: {category: 2}}
   return (
     <div>
-      <h4>ID: {task['_id']['$oid']} </h4>
-      <h4>邮箱: { task.username }</h4>
-      <Input placeholder="评分" value={task.score} onChange={(e) => {setForm({...form, score: e.target.value})}}/>
-      <div className="sub-title">查重结果</div>
-      <Upload {...props1}>
-        <Button icon={<UploadOutlined />}>Click to Upload</Button>
-      </Upload>
-      <div className="sub-title">语法结果</div>
-      <Upload {...props2}>
-        <Button icon={<UploadOutlined />}>Click to Upload</Button>
-      </Upload>
-      <Button type='primary' onClick={ submitHandle }>确认提交</Button>
+      <div className="flex task-list-item">
+        <div className='task-list-item-title'>ID: </div>
+        <div>{task['_id']['$oid']}</div>
+      </div>
+      <div className="flex task-list-item">
+        <div className='task-list-item-title'>邮箱: </div>
+        <div>{ task.username }</div>
+      </div>
+      <div className="flex task-list-item">
+        <div className='task-list-item-title'>重复率: </div>
+        <div> <Input placeholder="重复率" value={task.repeatScore} onChange={(e) => {setForm({...form, repeatScore: e.target.value})}}/> </div>
+      </div>
+
+      <div className="flex task-list-item">
+        <div className='task-list-item-title'>评分: </div>
+        <div> <Input placeholder="评分" onChange={(e) => {setForm({...form, score: e.target.value})}}/> </div>
+      </div>
+      <div className="flex task-list-item">
+        <div className="sub-title task-list-item-title">查重结果</div>
+        <Upload {...props1}>
+          <Button icon={<UploadOutlined />}>Click to Upload</Button>
+        </Upload>
+      </div>
+      <div className="flex task-list-item">
+      <div className="sub-title task-list-item-title">语法结果</div>
+        <Upload {...props2}>
+          <Button icon={<UploadOutlined />}>Click to Upload</Button>
+        </Upload>
+      </div>
+      <Button style={{ marginTop: 30 }} type='primary' onClick={ submitHandle }>确认提交</Button>
     </div>
   )
 }

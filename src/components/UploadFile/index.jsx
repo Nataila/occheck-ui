@@ -15,6 +15,7 @@ export default function UploadFile() {
 
   let history = useHistory()
   const [fileList, setFileList] = useState([]);
+  const [version, setVersion] = useState(0);
   const user = localStorage.getItem('user');
 
   const selectStyle = {
@@ -26,7 +27,10 @@ export default function UploadFile() {
       history.push('/signin');
       return false
     }
-    const params = {file_path: fileList};
+    const params = {
+      file_path: fileList,
+      version
+    };
     const res = await api.taskNew(params)
     if (res.data == 'ok') {
       message.success('上传文档成功后，将15-30分钟内，将结果发送至您的 OCcheck 账户邮箱');
@@ -37,6 +41,7 @@ export default function UploadFile() {
   const { token } = user ? JSON.parse(user) : '';
 
   function selectChange (value) {
+    setVersion(value)
   }
 
   const uploadProps = {
@@ -46,6 +51,7 @@ export default function UploadFile() {
     headers: {
       token,
     },
+    data: {category: 0},
     onChange(info) {
       const { status } = info.file;
       console.log(status)
