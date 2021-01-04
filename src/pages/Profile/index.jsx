@@ -33,19 +33,22 @@ export default function Profile () {
   const [isCountryModalVisible, setCountryModalVisible] = useState(false);
   const [country, setCountry] = useState(1);
   const [loginUser, setLoginUser] = useState({});
+  const [me, setMe] = useState({})
+
+  async function fetchData() {
+    const res = await api.taskList();
+    setTasks(res.data);
+    const me = await api.myProfile();
+    setLoginUser(me.data);
+  }
 
   useEffect(() => {
     const user = localStorage.getItem('user');
     if (!user) {
       history.push('/signin');
       return false
-    }
-     
-    async function fetchData() {
-      const res = await api.taskList();
-      setTasks(res.data);
-      const me = await api.myProfile();
-      setLoginUser(me.data);
+    } else {
+      setMe(JSON.parse(user))
     }
     fetchData();
   }, []);
@@ -62,10 +65,18 @@ export default function Profile () {
     return l.join(', ')
   }
 
+  const submitCountry = async () => {
+    const res = await api.userUpdate(me.id, {country});
+    if (res.message == 'Success') {
+      message.success('修改成功！');
+      setCountryModalVisible(false);
+      fetchData();
+    }
+  }
+
   const countrySelect = async value => {
     setCountry(value.value);
   }
-
 
   const onFinish = async values => {
     const res = await api.commentNew(values);
@@ -76,6 +87,11 @@ export default function Profile () {
   }
 
   const onPwdFinish = async values => {
+    const res = await api.changePwd(values)
+    if (res.data === 'ok') {
+      message.success('修改密码成功！');
+      setPwdModalVisible(false);
+    }
   }
 
   return (
@@ -97,7 +113,7 @@ export default function Profile () {
               <OcOption value="2">澳洲</OcOption>
               <OcOption value="3">加拿大</OcOption>
             </OcSelect>
-            <button className="oc-btn-primary" style={{ width: '100%', marginTop: 20}}>提交</button>
+            <button className="oc-btn-primary" onClick={submitCountry} style={{ width: '100%', marginTop: 20}}>提交</button>
           </div>
         </div>
       </div>
@@ -118,34 +134,34 @@ export default function Profile () {
           onFinish={onPwdFinish}
           style={{width: 'min-content', margin: '0 auto'}}>
           <Form.Item
-            name="oldPassword"
+            name="old_password"
             rules={[{ required: true, message: '请输入密码' }]}
           >
           <Input
             type="password"
             className="signup-input"
             placeholder="请输入旧密码"
-            name='password' />
+            name='old_password' />
           </Form.Item>
           <Form.Item
-            name="password"
+            name="new_password1"
             rules={[{ required: true, message: '请输入密码' }]}
           >
           <Input
             type="password"
             className="signup-input"
             placeholder="请输入新密码"
-            name='password1' />
+            name='new_password1' />
           </Form.Item>
           <Form.Item
-            name="password"
+            name="new_password2"
             rules={[{ required: true, message: '请输入密码' }]}
           >
           <Input
             type="password"
             className="signup-input"
             placeholder="请确认新密码"
-            name='password2' />
+            name='new_password2' />
           </Form.Item>
           <button className="oc-btn-primary submit-btn" htmltype="submit">确认修改</button>
         </Form>

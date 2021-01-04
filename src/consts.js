@@ -15,6 +15,7 @@ export const API = {
   USER_DETAIL: '/account/detail/',
   USER_UPDATE: '/account/update/',
   FORGET_PWD: '/account/forget/',
+  CHANGE_PWD: '/account/changepwd/',
   TASK_NEW: '/tasks/new/',
   TASK_LIST: '/tasks/list/',
   TASK_UPDATE: '/tasks/update/',

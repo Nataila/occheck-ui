@@ -69,7 +69,6 @@ const taskList = async (params = {}) => {
 }
 
 const taskDetail = async (fid) => {
-  console.log(fid)
   const res = await httpGet(`${API.TASK_DETAIL}${fid}/`);
   return res
 }
@@ -79,9 +78,13 @@ const myProfile = async (params = {}) => {
   return res
 }
 
-
 const buyCount = async (params = {}) => {
   const res = await httpPost(API.ACCOUNT_BUY, params);
+  return res
+}
+
+const changePwd = async (params = {}) => {
+  const res = await httpPost(API.CHANGE_PWD, params);
   return res
 }
 
@@ -117,4 +120,5 @@ export default {
   userUpdate,
   sendCode,
   forgetPwd,
+  changePwd,
 }
