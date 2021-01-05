@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Table, Space, Button, message } from 'antd';
+import { Table, Space, Button, message, Input } from 'antd';
 import api from '../../../api';
+import { AudioOutlined } from '@ant-design/icons';
 
 import './index.sass';
 var moment = require('moment');
 
-export default function UserList() {
-  const [userList, setUserList] = useState([]);
 
-  async function getUserList() {
-    const list = await api.userList({limit: 18, status: 0});
-    setUserList(list);
+export default function UserList() {
+  const { Search } = Input;
+  const [userList, setUserList] = useState([]);
+  const [total, setTotal] = useState(0)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [search, setSearch] = useState('')
+
+  const prePageCount = 50
+
+  async function getUserList(page=1, search='') {
+    const skip = (page - 1) * prePageCount
+    const res = await api.userList({skip, limit: prePageCount, search});
+    setUserList(res.data);
+    setTotal(res.total);
   }
 
   useEffect(() => {
@@ -70,7 +80,24 @@ export default function UserList() {
     },
   ]
 
+  const onSearch = value => {
+    getUserList(1, value);
+  };
+
+  const pageOption = {
+    hideOnSinglePage: true,
+    current: currentPage,
+    total,
+    pageSize: prePageCount,
+    onChange: value => {
+      getUserList(value)
+      setCurrentPage(value)
+  }}
+
   return (
-    <Table dataSource={userList} columns={columns} />
+    <div>
+      <Search placeholder="搜索" onSearch={onSearch} style={{ width: 400, marginBottom: 20 }} />
+      <Table dataSource={userList} pagination={pageOption} columns={columns} />
+    </div>
   )
 }

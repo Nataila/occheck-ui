@@ -14,6 +14,15 @@ export default function TaskDetail() {
     async function fetchData() {
       const res = await api.taskDetail(id);
       setTask(res.data);
+      setForm({
+        ...form,
+        ...{
+          repeat: res.data.repeat['$oid'],
+          program: res.data.program['$oid'],
+          repeatScore: res.data.repeatScore,
+          score: res.data.score
+        }
+      })
     }
     fetchData()
   }, [])
@@ -22,10 +31,9 @@ export default function TaskDetail() {
   const { token } = user ? JSON.parse(user) : '';
 
   const submitHandle = async () => {
-    console.log(form)
     const res = await api.taskUpdate(form)
     if (res.data === 'ok') {
-      message.success('上传成功');
+      message.success('提交成功');
       window.location.href='/admin'
     }
   }
@@ -65,12 +73,12 @@ export default function TaskDetail() {
       </div>
       <div className="flex task-list-item">
         <div className='task-list-item-title'>重复率: </div>
-        <div> <Input placeholder="重复率" value={task.repeatScore} onChange={(e) => {setForm({...form, repeatScore: e.target.value})}}/> </div>
+        <div> <Input placeholder="重复率" key={task.repeatScore} defaultValue={task.repeatScore} onChange={(e) => {setForm({...form, repeatScore: e.target.value})}}/> </div>
       </div>
 
       <div className="flex task-list-item">
         <div className='task-list-item-title'>评分: </div>
-        <div> <Input placeholder="评分" onChange={(e) => {setForm({...form, score: e.target.value})}}/> </div>
+        <div> <Input placeholder="评分" key={task.score} defaultValue={task.score} onChange={(e) => {setForm({...form, score: e.target.value})}}/> </div>
       </div>
       <div className="flex task-list-item">
         <div className="sub-title task-list-item-title">查重结果</div>

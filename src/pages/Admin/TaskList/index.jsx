@@ -8,12 +8,18 @@ var fileDownload = require('js-file-download');
 
 export default function TaskList() {
   const [taskList, setTaskList] = useState([])
+  const [total, setTotal] = useState(0)
+  const [currentPage, setCurrentPage] = useState(1)
+  const prePageCount = 50
+
+  const fetchData = async (page=1) => {
+    const skip = (page - 1) * prePageCount
+    const res = await api.taskList({skip, limit: prePageCount});
+    setTaskList(res.data);
+    setTotal(res.total);
+  }
+
   useEffect(() => {
-    async function fetchData() {
-      const res = await api.taskList();
-      console.log(res.data);
-      setTaskList(res.data);
-    }
     fetchData();
   }, [])
 
@@ -67,7 +73,18 @@ export default function TaskList() {
     ),
   },
   ]
+
+  const pageOption = {
+    hideOnSinglePage: true,
+    current: currentPage,
+    total,
+    pageSize: prePageCount,
+    onChange: value => {
+      fetchData(value)
+      setCurrentPage(value)
+  }}
+
   return (
-    <Table dataSource={taskList} columns={columns} />
+    <Table dataSource={taskList} pagination={pageOption} columns={columns} />
   )
 }

@@ -24,6 +24,7 @@ const OcNav = (props) => {
     e.preventDefault();
     localStorage.removeItem('user');
     setLogin(false);
+    window.location.href='/';
   }
 
   return (

@@ -65,7 +65,7 @@ const userUpdate = async (uid, params = {}) => {
 
 const taskList = async (params = {}) => {
   const res = await httpGet(API.TASK_LIST, params);
-  return res
+  return res.data
 }
 
 const taskDetail = async (fid) => {
