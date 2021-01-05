@@ -73,6 +73,11 @@ const taskDetail = async (fid) => {
   return res
 }
 
+const getConf = async (fid) => {
+  const res = await httpGet(API.SYS_CONF);
+  return res
+}
+
 const myProfile = async (params = {}) => {
   const res = await httpGet(API.MY_PROFILE, params);
   return res
@@ -102,6 +107,11 @@ const fileDownload = async (fid, params = {}) => {
   return res
 }
 
+const wxCheck = async (params = {}) => {
+  const res = await httpPost(API.WX_PAY_CHECK, params);
+  return res
+}
+
 export default {
   commentList: getCommentList,
   signUp,
@@ -121,4 +131,6 @@ export default {
   sendCode,
   forgetPwd,
   changePwd,
+  wxCheck,
+  getConf,
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PlusOutlined, MinusOutlined } from '@ant-design/icons';
 import { Form, Input, message, Modal, Button } from 'antd';
 import QRCode  from 'qrcode.react';
@@ -17,6 +17,16 @@ export default function Deposit() {
   let [count, setCount] = useState(1)
   const [modalVisible, setModalVisible] = useState(false);
   const [payInfo, setPayInfo] = useState({})
+  const [prePrice, setPrePrice] = useState(0)
+
+  async function getConf() {
+    const res = await api.getConf();
+    setPrePrice(parseInt(res.data.price));
+  }
+
+  useEffect(() => {
+    getConf()
+  }, [])
 
   function subCountHandle() {
     if (count <= 1) {
@@ -30,6 +40,17 @@ export default function Deposit() {
     const res = await api.buyCount({count});
     setPayInfo(res.data)
     setModalVisible(true)
+  }
+
+  async function checkWxPay() {
+    const { fid } =  payInfo;
+    const res = await api.wxCheck({fid});
+    if (res.data === 'ok') {
+      message.success('购买成功！')
+      window.location.href='/profile';
+    } else {
+      message.error('未查询到付款信息！')
+    }
   }
 
   return (
@@ -64,7 +85,7 @@ export default function Deposit() {
             </div>
           </div>
           <p style={{ color: '#999999', margin: '10px 0'}}>付款完成后，请点击下方“已付款”</p>
-          <button className="oc-btn-primary">已付款</button>
+          <button className="oc-btn-primary" onClick={checkWxPay}>已付款</button>
         </div>
       </Modal>
       <div className="banner">
@@ -110,7 +131,7 @@ export default function Deposit() {
             <div className="flex price">
               <span className="deposit-subtitle">所需价格</span>
               <span className="rmb">￥</span>
-              <input type="text" style={{ width:220}} value={ count * 50 } />
+              <input type="text" style={{ width:220}} value={ count * prePrice } />
             </div>
             <div>
               <button className="oc-btn-primary buy-btn" onClick={ buySubmit }>购买</button>

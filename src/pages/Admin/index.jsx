@@ -17,6 +17,7 @@ import TaskList from './TaskList';
 import TaskDetail from './TaskDetail';
 import UserList from './UserList';
 import UserDetail from './UserDetail';
+import SysConf from './SysConf';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -58,6 +59,11 @@ export default function Admin() {
               评论审核
             </Link>
   	      </Menu.Item>
+  	      <Menu.Item key="4">
+            <Link to={`${url}/sys/`}>
+              系统配置
+            </Link>
+  	      </Menu.Item>
   	    </Menu>
   	  </Sider>
   	  <Layout>
@@ -81,6 +87,9 @@ export default function Admin() {
               </Route>
               <Route path={`${path}/users/`}>
                 <UserList />
+              </Route>
+              <Route path={`${path}/sys/`}>
+                <SysConf />
               </Route>
             </Switch>
   	      </div>

@@ -13,7 +13,9 @@ export const API = {
   SIGNUP: '/account/signup/',
   USER_LIST: '/account/list/',
   USER_DETAIL: '/account/detail/',
+  SYS_CONF: '/account/sysconf/',
   USER_UPDATE: '/account/update/',
+  WX_PAY_CHECK: '/account/buy/check/',
   FORGET_PWD: '/account/forget/',
   CHANGE_PWD: '/account/changepwd/',
   TASK_NEW: '/tasks/new/',
@@ -26,6 +28,6 @@ export const API = {
     NEW: '/comments/new/',
     UPDATE: '/comments/'
   },
-  ACCOUNT_BUY: '/account/buy',
+  ACCOUNT_BUY: '/account/buy/',
   FILE_DOWNLOAD: '/download/'
 };
