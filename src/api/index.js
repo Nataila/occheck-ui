@@ -73,8 +73,13 @@ const taskDetail = async (fid) => {
   return res
 }
 
-const getConf = async (fid) => {
+const getConf = async () => {
   const res = await httpGet(API.SYS_CONF);
+  return res
+}
+
+const setConf = async (params={}) => {
+  const res = await httpPost(API.SYS_CONF, params);
   return res
 }
 
@@ -133,4 +138,5 @@ export default {
   changePwd,
   wxCheck,
   getConf,
+  setConf,
 }
