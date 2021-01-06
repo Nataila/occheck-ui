@@ -14,11 +14,12 @@ export default function TaskDetail() {
     async function fetchData() {
       const res = await api.taskDetail(id);
       setTask(res.data);
+      const {repeat, program} = res.data;
       setForm({
         ...form,
         ...{
-          repeat: res.data.repeat['$oid'],
-          program: res.data.program['$oid'],
+          repeat: repeat ? repeat['$oid'] : '',
+          program: program ? program['$oid'] : '',
           repeatScore: res.data.repeatScore,
           score: res.data.score
         }
