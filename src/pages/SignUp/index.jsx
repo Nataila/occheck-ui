@@ -33,7 +33,7 @@ export default function SignUp () {
     const res = await api.signUp(values);
     if (res.message === 'Success') {
       message.success('注册成功！');
-      history.push('/');
+      window.location.href='/signin'
     }
   }
 
@@ -70,7 +70,7 @@ export default function SignUp () {
           <Input
             type="password"
             className="signup-input"
-            placeholder="Repeat Your Password"
+            placeholder="Your Password"
             name='password' />
           </Form.Item>
           <OcSelect onChange={ countrySelect } defaultValue="美国">
@@ -80,7 +80,9 @@ export default function SignUp () {
             <OcOption value="3">加拿大</OcOption>
           </OcSelect>
           <button className="oc-btn-primary submit-btn" htmlType="submit">注册</button>
+    {/*
           <p className="text-center"> 通过创建一个帐户，我接受<a onClick={showModal} href="javascript:void(0)">OC check 的条款或服务</a></p>
+*/}
         </Form>
       </div>
         <Modal title="服务条款" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} okText="确定" cancelText="取消">

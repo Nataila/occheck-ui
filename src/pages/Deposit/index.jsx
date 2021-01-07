@@ -21,7 +21,7 @@ export default function Deposit() {
 
   async function getConf() {
     const res = await api.getConf();
-    setPrePrice(parseInt(res.data.price));
+    setPrePrice(parseFloat(res.data.price));
   }
 
   useEffect(() => {

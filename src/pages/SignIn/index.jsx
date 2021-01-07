@@ -50,6 +50,7 @@ export default function SignIn () {
         </div>
         <Form
           onFinish={onFinish}
+          initialValues={{ remember: true }}
           style={{width: 'min-content', margin: '0 auto'}}>
           <Form.Item
             name="email"
@@ -74,10 +75,13 @@ export default function SignIn () {
           </Form.Item>
           <Form.Item name="remember" valuePropName="checked">
             <Checkbox>记住密码</Checkbox>
-            <Link to="/forget" style={{ float: 'right'}}>忘记密码?</Link>
           </Form.Item>
+          <Link to="/forget" style={{ float: 'right', marginTop: '-50px', position: 'relative'}}>忘记密码?</Link>
           <button className="oc-btn-primary submit-btn" htmltype="submit">登录</button>
+
+    {/*
           <p className="text-center"> 通过创建一个帐户，我接受<a onClick={showModal} href="javascript:void(0)">OC check 的条款或服务</a></p>
+*/}
         </Form>
       </div>
         <Modal title="服务条款" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} okText="确定" cancelText="取消">

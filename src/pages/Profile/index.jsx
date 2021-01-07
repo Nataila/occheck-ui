@@ -216,8 +216,8 @@ export default function Profile () {
         {tasks.map((item) => (
           <div className="oc-shadow history-item" key={ item.id }>
             <div className='flex' sytle={{ alignItems: 'center'}}>
-              <div className="day bc" style={{ fontSize: 50, fontWeight: 'bold', marginLeft: 20}}>{ item.day }</div>
-              <div className="file-name" style={{ color: '#656C75', fontSize: 24, marginLeft: 100}}>文件名称 ： { filesListToStr(item.files) }</div>
+              <div className="day bc" style={{ fontSize: 50, fontWeight: 'bold', marginLeft: 12}}>{ item.day }</div>
+              <div className="file-name" style={{ color: '#656C75', fontSize: 24, marginLeft: 84}}>文件名称 ： { filesListToStr(item.files) }</div>
             </div>
             <div className='flex' sytle={{ alignItems: 'center'}}>
               <div className="month" style={{ color: '#656C75', fontSize: 20}}>{ item.month }</div>

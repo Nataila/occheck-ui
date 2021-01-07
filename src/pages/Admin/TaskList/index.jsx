@@ -45,6 +45,37 @@ export default function TaskList() {
       key: 'username'
     },
     {
+      title: '版本',
+      dataIndex: 'version',
+      key: 'version',
+      render: text => {
+        return ['国际版', 'UK版'][parseInt(text)]
+      }
+    },
+    {
+      title: '语法评分',
+      dataIndex: 'score',
+      key: 'score'
+    },
+    {
+      title: '重复率',
+      dataIndex: 'repeatScore',
+      key: 'repeatScore'
+    },
+    {
+      title: '综合评分',
+      dataIndex: 'composite',
+      key: 'composite'
+    },
+    {
+      title: '等级',
+      dataIndex: 'level',
+      key: 'level',
+      render: text => {
+        return ['优秀', '合格', '不合格'][parseInt(text)]
+      }
+    },
+    {
       title: '文件',
       dataIndex: 'files',
       key: 'files',

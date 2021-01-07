@@ -35,6 +35,8 @@ export default function UploadFile() {
     if (res.data == 'ok') {
       message.success('上传文档成功后，将15-30分钟内，将结果发送至您的 OCcheck 账户邮箱');
       history.push('/profile');
+    } else {
+      message.error(res.data);
     }
   }
 

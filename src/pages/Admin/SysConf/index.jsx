@@ -62,9 +62,7 @@ export default function SycConf() {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
+        <Button type="primary" htmlType="submit">提交</Button>
       </Form.Item>
     </Form>
   )
