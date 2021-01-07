@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './index.sass';
 
-import BannerImg from '../../assets/imgs/banner.png';
+import BannerImg from '../../assets/imgs/me-banner.png';
 import UseOccheck from '../../components/UseOccheck';
 import { useHistory, Link } from 'react-router-dom';
 
@@ -170,7 +170,7 @@ export default function Profile () {
 
       <div className="banner">
         <div className="banner-wrapper">
-          <div className="banner-doc">
+          <div className="banner-doc" style={{position: 'relative'}}>
             <h1>我的账户</h1>
             <h3>查看您的账户信息和上传记录</h3>
           </div>

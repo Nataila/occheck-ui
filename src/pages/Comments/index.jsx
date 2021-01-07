@@ -18,7 +18,7 @@ export default function Comments () {
             <h1>用户评价</h1>
             <h3>您的评价就是我们的动力</h3>
           </div>
-          <img src={BannerImg} alt="" />
+          <img src={BannerImg} width='100%' alt="" />
         </div>
       </div>
       <div style={{ margin: '100px 0'}}>
