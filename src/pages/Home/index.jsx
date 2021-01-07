@@ -6,6 +6,7 @@ import { Row, Col } from 'antd';
 import './index.sass';
 
 import BannerImg1 from '../../assets/imgs/home/banner1.png';
+import BannerMobileHome from '../../assets/imgs/home/mobile-home-banner.png';
 import Step1Img from '../../assets/imgs/home/step1.png';
 import Step2Img from '../../assets/imgs/home/step2.png';
 import Step3Img from '../../assets/imgs/home/step3.png';
@@ -56,10 +57,11 @@ export default function Home () {
             <h1>就有 1 篇使用 OCcheck</h1>
             <h3>英美澳加留学生都在用的免费查重工具</h3>
           </div>
-          <img src={BannerImg1} width='100%' alt="" />
+          <img src={BannerImg1} width='100%' alt="" className='just-pc' />
+          <img src={BannerMobileHome} width='100%' style={{ marginTop: 30}} alt="" className='just-mobile' />
         </div>
       </div>
-      <div className="step container">
+      <div className="step container just-pc">
         <Row>
           <Col span={8} className='step-col'>
             <div className="step-text">Step 1</div>
@@ -81,6 +83,33 @@ export default function Home () {
           </Col>
         </Row>
       </div>
+      <div className="mc">
+        <div className="mobile-step step just-mobile">
+          <div className="flex flex-between">
+            <div className='step-col' style={{ width: '50%'}}>
+              <div className="step-text">Step 1</div>
+              <div>上传需要查重的文档</div>
+              <div>上传文档时，需填写您的邮箱，用于接收查重结果</div>
+            </div>
+            <img src={Step1Img} alt="" width="120px" />
+          </div>
+          <div className="flex flex-between" style={{ marginTop: 40}}>
+            <img src={Step2Img} alt="" width="120px" />
+            <div className='step-col' style={{ width: '50%'}}>
+              <div className="step-text">Step 2</div>
+              <div>等待查重结果</div>
+              <div>成功上传后，我们将在15-30分钟内将结果发送至您的邮箱，请您耐心等待</div>
+            </div>
+          </div>
+          <div className="flex flex-between" style={{ marginTop: 40}}>
+            <div className='step-col' style={{ width: '50%'}}>
+              <div className="step-text">Step 3</div>
+              <div>接收查重语法审核报告</div>
+              <div>查重结果出来后将自动发送到您的邮箱。您将通过您的注册邮箱来接收您的查重及语法报告</div>
+            </div>
+            <img src={Step2Img} alt="" width="120px" />
+          </div>
+        </div>
       <div style={{ marginTop: '62px'}}>
         <UploadFile />
       </div>
@@ -104,7 +133,7 @@ export default function Home () {
           </ul>
         </div>
       </div>
-      <div className='about-panel container'>
+      <div className='about-panel container just-pc'>
         <Row>
           <Col span={ 8 }>
             <div className="oc-shadow text-center">
@@ -133,6 +162,37 @@ export default function Home () {
           </Col>
         </Row>
       </div>
+      <div className='about-panel container just-mobile'>
+        <div>
+          <div>
+            <div className="oc-shadow text-center">
+              <img src={AboutList1} alt="" />
+              <div className="about-panel-title">Turnitin论文查重</div>
+              <p>是全球最权威的学术论文检测工具类系统，它通过大部分主流浏览器接入互联网，将用户提交的文稿与Turnitin背后海量的全球数据库和网页内容作比对，以很快的速度得出一个相似度比例和涵盖大量相关信息的‘原创性报告’给评审者，评审者能够根据这些Turnitin精确定位出的文稿中非原创的内容，对文稿整体的原创性作出一个客观判断
+              </p>
+            </div>
+          </div>
+          <div>
+            <div className="oc-shadow text-center">
+              <img src={AboutList2} alt="" />
+              <div className="about-panel-title">Grammaly语法检测</div>
+              <p>
+                                Grammarly是顶级的在线语法纠正和校对工具
+它能够通过AI仿生语言学对论文进行单词拼写检查、标点符号纠正、语法错误修正、语气调整以及风格建议给出等；对学术写作来说，Grammarly还可以进行学术建议
+                            </p>
+            </div>
+          </div>
+          <div>
+            <div className="oc-shadow text-center">
+              <img src={AboutList3} alt="" />
+              <div className="about-panel-title">AIspring全球博士打分系统</div>
+              <p>AIspring是于2019年底由斯坦福大学Keller&Ponic人工交互实验室发布的下一代智能数据库，我司通过Dr.Keller授权，获得首批全球使用权并应用于论文打分工作中。系统结合全球签约博士与大数据分析，对论文进行详实考核，并打出预估分数，为留学生提供精准的修改参考</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
       <div className="home-comment">
         <div className="title text-center">用户评价</div>
         <CommentList />

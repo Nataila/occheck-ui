@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Select, Upload, message } from 'antd';
+import { Button, Select, Upload, message } from 'antd';
 import { CaretDownOutlined, FileOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 
@@ -88,27 +88,47 @@ export default function UploadFile() {
           ,请放心使用
         </div>
       </div>
-      <div className="upload-form">
-        <div className="select-contry">
-          <Select
-            defaultValue="0"
-            style={selectStyle} 
-            onChange={selectChange} 
-            suffixIcon={<CaretDownOutlined style={{ fontSize:"24px" }} />}
-          >
-            <Option value="0">turnitin检测 国际版</Option>
-            <Option value="1">turnitin检测 UK版</Option>
-          </Select>
+      <div className="just-mobile">
+        <div className="upload-form flex">
+          <div className="select-contry-m">
+            <Select
+              defaultValue="0"
+              onChange={selectChange} 
+            >
+              <Option value="0">turnitin检测 国际版</Option>
+              <Option value="1">turnitin检测 UK版</Option>
+            </Select>
+          </div>
+          <div className="upload-content">
+            <Upload {...uploadProps}>
+              <button className='oc-btn upload-btn'>点击此处上传</button>
+            </Upload>,
+          </div>
         </div>
-        <div className="upload-content">
-          <Dragger {...uploadProps}>
-            <p className="ant-upload-drag-icon">
-              <FileOutlined style={{ color: '#9B9B9B', fontSize: '25px'}} />
-            </p>
-            <p className="ant-upload-hint">
-              拖拽文件到此处或本地上传
-            </p>
-          </Dragger>
+      </div>
+      <div className="just-pc">
+        <div className="upload-form">
+          <div className="select-contry">
+            <Select
+              defaultValue="0"
+              style={selectStyle} 
+              onChange={selectChange} 
+              suffixIcon={<CaretDownOutlined style={{ fontSize:"24px" }} />}
+            >
+              <Option value="0">turnitin检测 国际版</Option>
+              <Option value="1">turnitin检测 UK版</Option>
+            </Select>
+          </div>
+          <div className="upload-content">
+            <Dragger {...uploadProps}>
+              <p className="ant-upload-drag-icon">
+                <FileOutlined style={{ color: '#9B9B9B', fontSize: '25px'}} />
+              </p>
+              <p className="ant-upload-hint">
+                拖拽文件到此处或本地上传
+              </p>
+            </Dragger>
+          </div>
         </div>
       </div>
       <div className="text-center">

@@ -18,7 +18,7 @@ export default function CommentList() {
 
   return (
     <div className="comments container">
-      <div className="comments-list">
+      <div className="comments-list just-pc">
         <Row>
           {commentList.map((item) =>
           <Col span={8} key={item._id.$oid} className='comment-col'>
@@ -33,6 +33,18 @@ export default function CommentList() {
           )}
         </Row>
       </div>
+      <div className="comments-list just-mobile">
+          {commentList.map((item) =>
+          <div key={item._id.$oid}  className="comment-item">
+            <div className="name">{ item.name }</div>
+            <div className="location">{ item.location }</div>
+            <div className="content">{ item.content }</div>
+            <div className="time">Nov 24, 2020</div>
+            <div className="ardiv"></div>
+          </div>
+          )}
+      </div>
+
     </div>
   )
 }

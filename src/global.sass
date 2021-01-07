@@ -85,3 +85,166 @@ h3
     background: #FFF
     border: 2px solid #2097FF
 
+.just-mobile
+  display: none
+
+.just-pc
+  display: block !important
+
+.display-none
+  display: none
+
+@media screen and (max-width: 1168px)
+  .oc-shadow
+    box-shadow: none !important
+  .just-pc
+    display: none !important
+  .just-mobile
+    display: block
+  .nav-wrapper
+    padding: 20px !important
+    position: relative
+  .container
+    width: 100%
+    padding: 0 15px
+  .mc
+    padding-right: 10px !important
+    padding-left: 10px !important
+  .nav-list-wrapper
+    position: absolute
+    top: 0
+    right: 0
+    ul
+      display: flex
+      flex-direction: column
+      a
+        border: none
+        &.nav-selected
+          border: none
+  .upload-wrapper .upload-form .ant-upload.ant-upload-drag
+    width: 500px
+  .upload-wrapper .upload-form .ant-upload-btn
+    background: #1890ff
+  .ant-upload.ant-upload-drag p.ant-upload-hint
+    color: #FFF
+  .nav-mobile-login
+    font-size: 14px
+    margin-right: 60px
+    a
+      color: #FFF
+  .mobile-menu
+    img
+      position: absolute
+      right: 20px
+      width: 20px
+      top: 20px
+  .nav-list-wrapper-mobile
+    margin-top: 60px !important
+    margin-right: 20px
+    background: #FFF
+    border-radius: 5px
+    ul
+      li
+        margin: 0 20px !important
+        text-align: center
+        & + li
+          border-top: 1px solid #E3E3E3
+        a
+          color: #1890FF !important
+  .banner .banner-wrapper
+    flex-direction: column
+    min-height: 100px !important
+  .home .banner .banner-wrapper .banner-doc
+    margin: -10px 0 0 0
+    position: relative
+
+  h1
+    font-size: 25px
+
+  h3
+    font-size: 18px
+  .logo
+    width: 100px
+  .home
+    background-image: linear-gradient(to bottom, #1890FF, #4ABBFF) !important
+    .step.mobile-step
+      margin-top: 0 !important
+      .flex
+        padding: 0 20px
+      .step-col
+        padding: 0 !important
+        div
+          &:first-child
+            font-size: 32px !important
+          &:nth-child(2)
+            font-size: 14px !important
+          &:nth-child(3)
+            font-size: 12px !important
+            font-size: 14px !important
+  #root
+    .upload-form
+      margin-top: 20px
+    .upload-wrapper
+      padding: 20px 40px
+      background: #FFF
+      .header
+        font-size: 14px
+      .oc-btn
+        height: 30px
+        font-size: 14px
+        line-height: 30px
+        margin: 0
+        border-radius: 10px
+        width: auto
+        padding: 0 10px 10px
+        margin-left: 10px
+    .select-contry-m
+      .ant-select-selector
+        border-radius: 10px
+    .home
+      .about
+        background: #FFF
+        margin-top: 20px
+        img
+          width: 25px
+        .title, .sub-title
+          font-size: 16px !important
+          color: #000
+        .about-content
+          font-size: 12px
+        .about-ul
+          li
+            font-size: 14px
+      .about-panel.just-mobile
+        background: #FFF
+        .oc-shadow
+          box-shadow: none
+          height: auto
+          padding: 10px
+          text-align: left
+        .about-panel-title
+          padding: 0
+      .home-comment
+        background: transparent
+        .title
+          color: #FFF
+          font-size: 18px
+        .comments-list
+          overflow-x: auto
+          align-items: flex-start
+          height: 270px
+          display: flex
+          .comment-item
+            margin-left: 10px
+            flex-grow: 0
+            flex-shrink: 0
+            display: inline-block
+            width: 200px
+            padding: 10px 0
+            .name, .location, .content, .time
+              font-size: 14px
+              padding: 5px 10px
+            .content
+              height: 100px
+              max-height: 100px
+              overflow: hidden

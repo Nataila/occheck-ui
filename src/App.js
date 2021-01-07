@@ -46,41 +46,39 @@ function App() {
   const [isLogin, setLogin] = useState(status)
   return (
     <loginContext.Provider value={{ isLogin, setLogin }}>
-      <Layout>
-        <Router>
-          <header>
-            <OcNav isLogin={isLogin} />
-          </header>
-          <div>
-            <Switch>
-              <Route path="/signin">
-                <SignIn />
-              </Route>
-              <Route path="/signup">
-                <SignUp />
-              </Route>
-              <Route path="/forget">
-                <ForgetPwd />
-              </Route>
-              <PrivateRoute path="/check" component={ Check } />
-              <Route path="/comments">
-                <Comments />
-              </Route>
-              <PrivateRoute path="/profile" component={ Profile } />
-              <PrivateRoute path="/deposit" component={ Deposit } />
-              <Route path="/admin">
-                <Admin />
-              </Route>
-              <Route path="/">
-                <Home />
-              </Route>
-            </Switch>
-          </div>
-          <footer>
-            <OcFooter />
-          </footer>
-        </Router>
-      </Layout>
+      <Router>
+        <header>
+          <OcNav isLogin={isLogin} />
+        </header>
+        <div>
+          <Switch>
+            <Route path="/signin">
+              <SignIn />
+            </Route>
+            <Route path="/signup">
+              <SignUp />
+            </Route>
+            <Route path="/forget">
+              <ForgetPwd />
+            </Route>
+            <PrivateRoute path="/check" component={ Check } />
+            <Route path="/comments">
+              <Comments />
+            </Route>
+            <PrivateRoute path="/profile" component={ Profile } />
+            <PrivateRoute path="/deposit" component={ Deposit } />
+            <Route path="/admin">
+              <Admin />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+        <footer>
+          <OcFooter />
+        </footer>
+      </Router>
     </loginContext.Provider>
   )
 }
