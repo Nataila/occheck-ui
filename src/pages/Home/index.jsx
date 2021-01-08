@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Row, Col } from 'antd';
+import { Row, Col, Collapse } from 'antd';
 
 import './index.sass';
 
@@ -15,11 +15,13 @@ import BottomIconImg from '../../assets/imgs/home/b.png';
 import AboutList1 from '../../assets/imgs/home/aboutList1.png';
 import AboutList2 from '../../assets/imgs/home/aboutList2.png';
 import AboutList3 from '../../assets/imgs/home/aboutList3.png';
+import ArrowRight from '../../assets/imgs/home/arrow-right.png';
 
 import UseOccheck from '../../components/UseOccheck';
 import UploadFile from '../../components/UploadFile';
 import CommentList from '../../components/CommentsList';
 
+const { Panel } = Collapse;
 
 export default function Home () {
   const [qaIndex, setQaIndex] = useState(0)
@@ -110,7 +112,7 @@ export default function Home () {
             <img src={Step2Img} alt="" width="120px" />
           </div>
         </div>
-      <div style={{ marginTop: '62px'}}>
+      <div className='home-uploadfile-wrapper'>
         <UploadFile />
       </div>
       <div className="about container">
@@ -198,7 +200,22 @@ export default function Home () {
         <CommentList />
         <Link to="/comments" className='more oc-btn'>MORE</Link>
       </div>
-      <div className="qa container">
+      <div className="mc just-mobile">
+        <div className="qa">
+          <Collapse
+            accordion
+            expandIcon={({ isActive }) => <img src={ ArrowRight} width="13px" style={{transform: isActive ? "rotate(90deg)" : ""}} /> }
+            className="site-collapse-custom-collapse"
+          >
+            { qData.map((item, idx) =>
+              <Panel header={item} key={ idx } className="site-collapse-custom-panel">
+                <p>{ aData[idx] }</p>
+              </Panel>
+            )}
+          </Collapse>
+        </div>
+      </div>
+      <div className="qa container just-pc">
         <Row>
           <Col span={ 12 }>
             <div className="oc-shadow q-content">

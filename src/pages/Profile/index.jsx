@@ -102,7 +102,7 @@ export default function Profile () {
         header={ null }
         onCancel={() => {setCountryModalVisible(false)}}
       >
-        <div className="signup-content" style={{ height: 'fit-content'}}>
+        <div className="signup-content mobile" style={{ height: 'fit-content'}}>
         <div className="title text-center">修改国家</div>
         <div className="logo-color-wrapper">
           <img src={ LogoColor } alt="" />
@@ -125,7 +125,7 @@ export default function Profile () {
         header={ null }
         onCancel={() => {setPwdModalVisible(false)}}
       >
-        <div className="signup-content" style={{ height: 'fit-content'}}>
+        <div className="signup-content mobile" style={{ height: 'fit-content'}}>
         <div className="title text-center">修改密码</div>
         <div className="logo-color-wrapper">
           <img src={ LogoColor } alt="" />
@@ -170,19 +170,19 @@ export default function Profile () {
 
       <div className="banner">
         <div className="banner-wrapper">
-          <div className="banner-doc" style={{position: 'relative'}}>
+          <div className="banner-doc">
             <h1>我的账户</h1>
             <h3>查看您的账户信息和上传记录</h3>
           </div>
           <img src={BannerImg} alt="" />
         </div>
       </div>
-      <div className="container">
+      <div className="container just-pc">
         <div className="title text-center" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>欢迎
           <img src={LogoColor} style={{margin: '0 10px'}} alt="" />
         用户，{ loginUser.email }</div>
       </div>
-      <div className="container">
+      <div className="container just-pc">
         <div className="flex last-count-wrapper">
           <div className="last-count">{ loginUser.query_count }<span style={{ fontSize: '40px'}}>次</span></div>
           <div className="last-count-text">
@@ -193,29 +193,40 @@ export default function Profile () {
         </div>
       </div>
       <div className="container">
-        <div className="p-sub-title">基本信息</div>
-        <div className="oc-shadow profile-panel">
-          <div className="flex flex-between profile-item">
-            <div>邮箱: { loginUser.email }</div>
-            <div className="modify bc"></div>
+        <div className="flex last-count-wrapper">
+          <div className="last-count-text">
+            <p style={p1Style}>您还可以免费查重的次数</p>
+            <p style={p2Style}>请添加客服获取更多免费查重机会</p>
+            <Link to="/deposit" className="oc-btn oc-btn-primary" style={{ marginTop: 20}}>增加免费次数</Link>
           </div>
-
-          <div className="flex flex-between profile-item">
-            <div>密码:  ******</div>
-            <div className="modify bc" onClick={() => {setPwdModalVisible(true)}}>修改</div>
-          </div>
-
-          <div className="flex flex-between profile-item">
-            <div>国家: { countryDisplay(loginUser.country) }</div>
-            <div className="modify bc" onClick={() => {setCountryModalVisible(true)}}>修改</div>
-          </div>
+          <div className="last-count">{ loginUser.query_count }<span style={{ fontSize: '40px'}}>次</span></div>
         </div>
       </div>
+
+        <div className="container me-profile">
+          <div className="p-sub-title">基本信息</div>
+          <div className="oc-shadow profile-panel">
+            <div className="flex flex-between profile-item">
+              <div>邮箱: { loginUser.email }</div>
+              <div className="modify bc"></div>
+            </div>
+
+            <div className="flex flex-between profile-item">
+              <div>密码:  ******</div>
+              <div className="modify bc" onClick={() => {setPwdModalVisible(true)}}>修改</div>
+            </div>
+
+            <div className="flex flex-between profile-item">
+              <div>国家: { countryDisplay(loginUser.country) }</div>
+              <div className="modify bc" onClick={() => {setCountryModalVisible(true)}}>修改</div>
+            </div>
+          </div>
+        </div>
       <div className="container">
         <div className="p-sub-title">上传记录</div>
         {tasks.map((item) => (
           <div className="oc-shadow history-item" key={ item.id }>
-            <div className='flex' sytle={{ alignItems: 'center'}}>
+            <div className='flex history-item-top'>
               <div className="day bc" style={{ fontSize: 50, fontWeight: 'bold', marginLeft: 12}}>{ item.day }</div>
               <div className="file-name" style={{ color: '#656C75', fontSize: 24, marginLeft: 84}}>文件名称 ： { filesListToStr(item.files) }</div>
             </div>

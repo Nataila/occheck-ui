@@ -43,7 +43,7 @@ export default function SignIn () {
 
   return ( 
     <div className="signup-root">
-      <div className="signup-content oc-shadow">
+      <div className="signup-content mobile oc-shadow">
         <div className="title text-center">登录</div>
         <div className="logo-color-wrapper">
           <img src={ logoColor } alt="" />

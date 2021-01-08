@@ -13,7 +13,7 @@ export default function Comments () {
     <div className='comments-root'>
       <div className="banner">
         <div className="banner-wrapper">
-          <img src={Banner1Img} className='banner1img' alt="" />
+          <img src={Banner1Img} className='banner1img just-pc' alt="" />
           <div className="banner-doc">
             <h1>用户评价</h1>
             <h3>您的评价就是我们的动力</h3>
@@ -21,7 +21,7 @@ export default function Comments () {
           <img src={BannerImg} width='100%' alt="" />
         </div>
       </div>
-      <div style={{ margin: '100px 0'}}>
+      <div className='comment-list-wrapper'>
         <CommentList/>
       </div>
       <UseOccheck />

@@ -61,7 +61,7 @@ export default function Deposit() {
         header={ null }
         onCancel={() => {setModalVisible(false)}}
       >
-        <div className="signup-content pay-content" style={{ height: 'fit-content'}}>
+        <div className="signup-content mobile pay-content" style={{ height: 'fit-content'}}>
           <div className="title text-center">您将要付款</div>
           <div className="logo-color-wrapper">
             <img src={ logoColor } alt="" />
@@ -88,19 +88,26 @@ export default function Deposit() {
           <button className="oc-btn-primary" onClick={checkWxPay}>已付款</button>
         </div>
       </Modal>
-      <div className="banner">
-        <div className="banner-wrapper" style={{ height: 400}}>
+      <div className="banner just-pc">
+        <div className="deposit-banner-wrapper" style={{ height: 400}}>
           <div className="banner-doc">
             <h3>强烈建议您<span style={{ fontWeight: 'bold'}}>添加客服免费升级无限查重账户</span></h3>
             <h3>或通过购买获得更多查重机会</h3>
           </div>
         </div>
       </div>
+      <div className='just-mobile'>
+        <div className="banner-doc-mobile-deposit">
+          <h3>强烈建议您<span style={{ fontWeight: 'bold'}}>添加客服免费升级无限查重账户</span></h3>
+          <h3>或通过购买获得更多查重机会</h3>
+        </div>
+      </div>
       <div className="deposit-content container flex">
         <div className="to-service">
-          <div className="pay-img-wrapper">
+          <div className="pay-img-wrapper just-pc">
             <img src={ pay1Img } alt="" className='pay-img'/>
           </div>
+          <img src={ pay1Img } alt="" className='pay-img just-mobile'/>
           <div className="to-service-bottom">
             <div className="num bc">01</div>
             <p className='bc' style={{ fontSize: 24, fontWeight: 'bold'}}>添加客服，免费升级无限查重账户</p>
@@ -110,30 +117,31 @@ export default function Deposit() {
           </div>
         </div>
         <div className="buy">
-          <div className="pay-img-wrapper">
+          <div className="pay-img-wrapper just-pc">
             <img src={ pay2Img } alt="" className='pay-img'/>
           </div>
+          <img src={ pay2Img } alt="" className='pay-img just-mobile'/>
           <div className="buy-bottom">
             <div className="num">02</div>
             <p style={{ fontSize: 24, fontWeight: 'bold'}}>直接购买次数</p>
-            <div className='flex buy-wrapper'>
-              <span className="deposit-subtitle">购买次数</span>
-              <div className='flex counter'>
-                <span className="sub" onClick={subCountHandle}>
-                  <MinusOutlined />
-                </span>
-                <input type="text" readOnly value={count} onChange={(e) => setCount(parseInt(e.target.value))}/>
-                <span className="plus" onClick={e => setCount(count + 1)}>
-                  <PlusOutlined />
-                </span>
+            <div className='mobile-buy'>
+              <div className='flex buy-wrapper'>
+                <span className="deposit-subtitle">购买次数</span>
+                <div className='flex counter'>
+                  <span className="sub" onClick={subCountHandle}>
+                    <MinusOutlined />
+                  </span>
+                  <input type="text" readOnly value={count} onChange={(e) => setCount(parseInt(e.target.value))}/>
+                  <span className="plus" onClick={e => setCount(count + 1)}>
+                    <PlusOutlined />
+                  </span>
+                </div>
               </div>
-            </div>
-            <div className="flex price">
-              <span className="deposit-subtitle">所需价格</span>
-              <span className="rmb">￥</span>
-              <input type="text" style={{ width:220}} value={ count * prePrice } />
-            </div>
-            <div>
+              <div className="flex price">
+                <span className="deposit-subtitle">所需价格</span>
+                <span className="rmb">￥</span>
+                <input type="text" style={{ width:220}} value={ count * prePrice } />
+              </div>
               <button className="oc-btn-primary buy-btn" onClick={ buySubmit }>购买</button>
             </div>
           </div>

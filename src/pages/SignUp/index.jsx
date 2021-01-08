@@ -44,7 +44,7 @@ export default function SignUp () {
 
   return ( 
     <div className="signup-root">
-      <div className="signup-content oc-shadow">
+      <div className="mobile signup-content oc-shadow">
         <div className="title text-center">创建一个账户</div>
         <div className="logo-color-wrapper">
           <img src={ logoColor } alt="" />

@@ -53,7 +53,7 @@ const OcNav = (props) => {
         }
       </div>
       <div className='nav-list-wrapper nav-list-wrapper-mobile just-mobile' style={{ display: menuToggle ? 'block': 'none'}}>
-        <ul>
+        <ul onClick={() => {setMenuToggle(false)}}>
           <li>
             <NavLink to="/" exact={true} activeClassName='nav-selected'>首页</NavLink>
           </li>
