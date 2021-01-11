@@ -192,7 +192,7 @@ export default function Profile () {
           <Link to="/deposit" className="oc-btn oc-btn-primary" style={{ marginTop: 20}}>增加免费次数</Link>
         </div>
       </div>
-      <div className="container">
+      <div className="container just-mobile">
         <div className="flex last-count-wrapper">
           <div className="last-count-text">
             <p style={p1Style}>您还可以免费查重的次数</p>

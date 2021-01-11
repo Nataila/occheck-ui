@@ -4,7 +4,7 @@ import useOccheckImg from '../../assets/imgs/useoccheck.png';
 
 export default function UseOccheck() {
   return (
-    <div className='use-occheck-wrapper just-pc'>
+    <div className='use-occheck-wrapper'>
       <div className="container">
         <div className="flex">
           <div className="flex">
