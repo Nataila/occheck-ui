@@ -61,6 +61,16 @@ export default function SycConf() {
         <Input />
       </Form.Item>
 
+      <Form.Item
+        label="通知的手机号"
+        name="phone"
+        rules={[{ required: true, message: '请输入手机号' }]}
+      >
+        <Input />
+      </Form.Item>
+
+
+
       <Form.Item>
         <Button type="primary" htmlType="submit">提交</Button>
       </Form.Item>
