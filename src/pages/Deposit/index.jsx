@@ -110,7 +110,7 @@ export default function Deposit() {
           <img src={ pay1Img } alt="" className='pay-img just-mobile'/>
           <div className="to-service-bottom">
             <div className="num bc">01</div>
-            <p className='bc' style={{ fontSize: 24, fontWeight: 'bold'}}>添加客服，免费升级无限查重账户</p>
+            <p className='bc deosit-item-title'>添加客服，免费升级无限查重账户</p>
             <div className="service-qrcode">
               <img src={ QrCode } alt="" />
             </div>
@@ -123,7 +123,7 @@ export default function Deposit() {
           <img src={ pay2Img } alt="" className='pay-img just-mobile'/>
           <div className="buy-bottom">
             <div className="num">02</div>
-            <p style={{ fontSize: 24, fontWeight: 'bold'}}>直接购买次数</p>
+            <p>直接购买次数</p>
             <div className='mobile-buy'>
               <div className='flex buy-wrapper'>
                 <span className="deposit-subtitle">购买次数</span>
