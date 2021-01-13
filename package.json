@@ -43,5 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://nataila.cn:8016/api/v1/"
+  "proxy": "http://nataila.cn:8016/"
 }

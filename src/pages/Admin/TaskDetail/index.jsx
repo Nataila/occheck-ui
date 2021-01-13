@@ -3,12 +3,13 @@ import { Input, Upload, message, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useParams } from 'react-router-dom';
 import api from '../../../api';
+import { API } from '../../../consts.js';
 import './index.sass';
 
 export default function TaskDetail() {
   let { id } = useParams();
-  const [task, setTask] = useState({'_id': {'$oid': ''}})
-  const [form, setForm] = useState({tid: id})
+  const [task, setTask] = useState({'_id': {'$oid': ''}, 'uid': {'$oid': ''}});
+  const [form, setForm] = useState({tid: id});
 
   useEffect(() => {
     async function fetchData() {
@@ -41,7 +42,7 @@ export default function TaskDetail() {
 
   const props = {
     name: 'file',
-    action: '/tasks/upload/',
+    action: API.UPLOAD,
     headers: {
       token,
     },
@@ -55,13 +56,14 @@ export default function TaskDetail() {
           fileType = {program: id}
         }
         setForm({...form, ...fileType})
+        message.success(`${info.file.name} 上传成功`);
       } else if (info.file.status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
       }
     },
   };
-  const props1 = {...props, data: {category: 1}}
-  const props2 = {...props, data: {category: 2}}
+  const props1 = {...props, data: {category: 1, tuid: task.uid.$oid}}
+  const props2 = {...props, data: {category: 2, tuid: task.uid.$oid}}
   return (
     <div>
       <div className="flex task-list-item">

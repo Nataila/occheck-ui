@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 import turnitinImg from '../../assets/imgs/turnitin.png';
 import api from '../../api';
+import { API } from '../../consts';
 
 import './index.sass';
 
@@ -25,7 +26,11 @@ export default function UploadFile() {
   async function submitHandle () {
     if (!user) {
       history.push('/signin');
-      return false
+      return false;
+    }
+    if (fileList.length === 0) {
+      message.error('请先上传文件!')
+      return false;
     }
     const params = {
       file_path: fileList,
@@ -49,11 +54,11 @@ export default function UploadFile() {
   const uploadProps = {
     name: 'file',
     multiple: true,
-    action: '/tasks/upload/',
+    action: API.UPLOAD,
     headers: {
       token,
     },
-    data: {category: 0},
+    data: {category: 0, tuid: 'xx'},
     onChange(info) {
       const { status } = info.file;
       console.log(status)

@@ -8,6 +8,7 @@
 export const BASE_URL = process.env.REACT_APP_API_URI;
 
 export const API = {
+  UPLOAD: '/api/v1/tasks/upload/',
   SEND_CODE: '/account/send/mail/code/',
   SIGNIN: '/account/signin/',
   SIGNUP: '/account/signup/',
