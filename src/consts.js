@@ -30,5 +30,6 @@ export const API = {
     UPDATE: '/comments/'
   },
   ACCOUNT_BUY: '/account/buy/',
-  FILE_DOWNLOAD: '/download/'
+  FILE_DOWNLOAD: '/download/',
+  RESULT_FILE_DOWNLOAD: '/result/download/'
 };

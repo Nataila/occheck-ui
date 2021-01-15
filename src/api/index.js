@@ -4,9 +4,8 @@
 * Created at2020/12/08
 */
 
-import Axios from "axios";
 import { API } from '../consts';
-import { httpGet, httpPost, httpPut } from '../helper/request';
+import { httpGet, httpPost, httpPut, axios } from '../helper/request';
 
 const getCommentList = async (params = {}) => {
   const res = await httpGet(API.COMMENTS.LIST, params);
@@ -104,8 +103,17 @@ const taskUpdate = async (params = {}) => {
 }
 
 const fileDownload = async (fid, params = {}) => {
-  const res = await Axios({
+  const res = await axios({
     url: `${API.FILE_DOWNLOAD}${fid}/`,
+    method: 'GET',
+    responseType: 'blob', // Important
+  })
+  return res
+}
+
+const resultFileDownload = async (uid, fid, params = {}) => {
+  const res = await axios({
+    url: `${API.RESULT_FILE_DOWNLOAD}${uid}/${fid}/`,
     method: 'GET',
     responseType: 'blob', // Important
   })
@@ -128,6 +136,7 @@ export default {
   myProfile,
   buyCount,
   fileDownload,
+  resultFileDownload,
   taskDetail,
   taskUpdate,
   userList,

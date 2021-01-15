@@ -4,7 +4,7 @@ import ReactDom from 'react-dom';
 import { BASE_URL } from "../consts";
 import { message, Spin } from 'antd';
 
-const axios = Axios.create({
+export const axios = Axios.create({
   timeout: 10000
 });
 

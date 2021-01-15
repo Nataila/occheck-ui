@@ -85,15 +85,17 @@ export default function TaskDetail() {
       </div>
       <div className="flex task-list-item">
         <div className="sub-title task-list-item-title">查重结果</div>
+        {task.repeat ? '已上传' :
         <Upload {...props1}>
           <Button icon={<UploadOutlined />}>Click to Upload</Button>
-        </Upload>
+        </Upload>}
       </div>
       <div className="flex task-list-item">
       <div className="sub-title task-list-item-title">语法结果</div>
+        {task.program ? '已上传' :
         <Upload {...props2}>
           <Button icon={<UploadOutlined />}>Click to Upload</Button>
-        </Upload>
+        </Upload>}
       </div>
       <Button style={{ marginTop: 30 }} type='primary' onClick={ submitHandle }>确认提交</Button>
     </div>

@@ -28,6 +28,11 @@ export default function TaskList() {
     fileDownload(res.data, name);
   }
 
+  const resultDownLoad = async (uid, fid, name) => {
+    const res = await api.resultFileDownload(uid, fid)
+    fileDownload(res.data, name);
+  }
+
   const getStatus = value => {
     const statusList = ['已上传查询文件', '已上传结果文件', '已生成评分PDF', '已合并PDF', '已发送邮件']
     return statusList[parseInt(value)]
@@ -76,7 +81,7 @@ export default function TaskList() {
       }
     },
     {
-      title: '文件',
+      title: '查询文件',
       dataIndex: 'files',
       key: 'files',
       render: files => {
@@ -84,6 +89,15 @@ export default function TaskList() {
           return <span className="file-span" key={item.fid} onClick={() => {downLoad(item.fid, item.name)}}>{item.name}</span>
         })
         return res
+      }
+    },
+    {
+      title: '结果文件',
+      dataIndex: 'last_file',
+      key: 'last_file',
+      render: (file, record) => {
+        console.log(record)
+        return <span className="file-span" key={file} onClick={() => {resultDownLoad(record.uid, record.id, file)}}>{file ? '下载' : ''}</span>
       }
     },
     {
