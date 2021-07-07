@@ -80,7 +80,7 @@ export default function UploadFile() {
 
   return (
     <div className="oc-shadow upload-wrapper container">
-      <div className="header text-center">
+      <div className="header text-center just-pc">
         <div>
           本站为iThenticate官方授权，仅为
           <img src={turnitinImg} alt="" />
@@ -90,9 +90,23 @@ export default function UploadFile() {
         <div style={{ marginTop: '10px'}}>
           经本站检测的论文
           <span className='red-text'>绝对不会被收录</span>
-          ,请放心使用
+          <span className="just-pc">,请放心使用</span>
         </div>
       </div>
+      <div className="header text-center just-mobile">
+        <div>
+          本站为iThenticate官方授权<br />仅为
+          <img src={turnitinImg} alt="" />
+          <span className='red-text'>中文入口</span>
+        </div>
+        <div>国际版、UK版均由Turnitin官网提供检测经本站检测的论文</div>
+        <div style={{ marginTop: '10px'}}>
+          经本站检测的论文
+          <span className='red-text'>绝对不会被收录</span>
+          <span className="just-pc">,请放心使用</span>
+        </div>
+      </div>
+
       <div className="just-mobile">
         <div className="upload-form flex">
           <div className="select-contry-m">
@@ -106,7 +120,7 @@ export default function UploadFile() {
           </div>
           <div className="upload-content">
             <Upload {...uploadProps}>
-              <button className='oc-btn upload-btn'>点击此处上传</button>
+              <button className='oc-btn upload-btn'>点击此处上传文件</button>
             </Upload>,
           </div>
         </div>

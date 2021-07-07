@@ -15,11 +15,16 @@ import BottomIconImg from '../../assets/imgs/home/b.png';
 import AboutList1 from '../../assets/imgs/home/aboutList1.png';
 import AboutList2 from '../../assets/imgs/home/aboutList2.png';
 import AboutList3 from '../../assets/imgs/home/aboutList3.png';
+import AboutListM1 from '../../assets/imgs/home/aboutList1-m.png';
+import AboutListM2 from '../../assets/imgs/home/aboutList2-m.png';
+import AboutListM3 from '../../assets/imgs/home/aboutList3-m.png';
 import ArrowRight from '../../assets/imgs/home/arrow-right.png';
 
 import UseOccheck from '../../components/UseOccheck';
 import UploadFile from '../../components/UploadFile';
 import CommentList from '../../components/CommentsList';
+
+import EDULOGO from '../../assets/imgs/logo-edu.png'
 
 const { Panel } = Collapse;
 
@@ -63,6 +68,7 @@ export default function Home () {
           <img src={BannerMobileHome} width='100%' style={{ marginTop: 30}} alt="" className='just-mobile' />
         </div>
       </div>
+      <div className="mobile-reverse"></div>
       <div className="step container just-pc">
         <Row>
           <Col span={8} className='step-col'>
@@ -86,6 +92,9 @@ export default function Home () {
         </Row>
       </div>
       <div className="mc">
+        <div className='home-uploadfile-wrapper'>
+          <UploadFile />
+        </div>
         <div className="mobile-step step just-mobile">
           <div className="flex flex-between">
             <div className='step-col' style={{ width: '50%'}}>
@@ -112,16 +121,16 @@ export default function Home () {
             <img src={Step2Img} alt="" width="120px" />
           </div>
         </div>
-      <div className='home-uploadfile-wrapper'>
-        <UploadFile />
-      </div>
       <div className="about container">
-        <div className="title text-center">关于OCcheck</div>
+        <div className="title text-center">关于云授EDU-OCcheck</div>
+        <div className="text-center">
+          <img src={EDULOGO} alt="" class='about-logo' />
+        </div>
         <div className="about-top-icon">
           <img src={TopIconImg} alt="" />
         </div>
         <div className="about-content">
-          OCcheck.com是一家专注于留学生课程辅导与论文润色的学术平台，由硅谷著名天使基金KPCB创始人托姆斯·铂金斯(Thomas Perkins)投资，旗下拥有产品OCcheck（Oxford&Cambridge Check）免费论文检测系统基于大数据海量学术文献资源及互联网资源，与Turnitin、Grammaly、知网等国内外大型论文学术检测机构深度授权合作，坚持客观、公正、精准、全面的原则，对学术不端行为进行管理，为用户提供客观详实的查重报告，为出版、科研、学术等提供支持。
+          云授EDU是一家专注于留学生课程辅导与论文润色的学术平台，由硅谷著名天使基金KPCB创始人托姆斯·铂金斯(Thomas Perkins)投资，旗下拥有产品OCcheck免费论文检测系统基于大数据海量学术文献资源及互联网资源，与Turnitin、Grammaly、知网等国内外大型论文学术检测机构深度授权合作，坚持客观、公正、精准、全面的原则，对学术不端行为进行管理，为用户提供客观详实的查重报告，为出版、科研、学术等提供支持。
         </div>
         <div className="about-bottom-icon">
           <img src={BottomIconImg} alt="" />
@@ -157,7 +166,7 @@ export default function Home () {
           </Col>
           <Col span={ 8 }>
             <div className="oc-shadow text-center">
-              <img src={AboutList3} alt="" />
+              <img src={AboutList3} alt=""/>
               <div className="about-panel-title">AIspring全球博士打分系统</div>
               <p>AIspring是于2019年底由斯坦福大学Keller&Ponic人工交互实验室发布的下一代智能数据库，我司通过Dr.Keller授权，获得首批全球使用权并应用于论文打分工作中。系统结合全球签约博士与大数据分析，对论文进行详实考核，并打出预估分数，为留学生提供精准的修改参考</p>
             </div>
@@ -168,7 +177,8 @@ export default function Home () {
         <div>
           <div>
             <div className="oc-shadow text-center">
-              <img src={AboutList1} alt="" />
+              <img src={AboutList1} alt="" className='just-pc' />
+              <img src={AboutListM1} alt="" className="just-mobile-about-img" style={{ height: 55, marginBottom: 10}} />
               <div className="about-panel-title">Turnitin论文查重</div>
               <p>是全球最权威的学术论文检测工具类系统，它通过大部分主流浏览器接入互联网，将用户提交的文稿与Turnitin背后海量的全球数据库和网页内容作比对，以很快的速度得出一个相似度比例和涵盖大量相关信息的‘原创性报告’给评审者，评审者能够根据这些Turnitin精确定位出的文稿中非原创的内容，对文稿整体的原创性作出一个客观判断
               </p>
@@ -176,7 +186,8 @@ export default function Home () {
           </div>
           <div>
             <div className="oc-shadow text-center">
-              <img src={AboutList2} alt="" />
+              <img src={AboutList2} alt="" className='just-pc' />
+              <img src={AboutListM2} alt="" className="just-mobile-about-img" style={{ height: 55, marginBottom: 10}} />
               <div className="about-panel-title">Grammaly语法检测</div>
               <p>
                                 Grammarly是顶级的在线语法纠正和校对工具
@@ -186,7 +197,8 @@ export default function Home () {
           </div>
           <div>
             <div className="oc-shadow text-center">
-              <img src={AboutList3} alt="" />
+              <img src={AboutList3} alt="" className='just-pc' />
+              <img src={AboutListM3} alt="" className="just-mobile-about-img" style={{ height: 55, marginBottom: 10}} />
               <div className="about-panel-title">AIspring全球博士打分系统</div>
               <p>AIspring是于2019年底由斯坦福大学Keller&Ponic人工交互实验室发布的下一代智能数据库，我司通过Dr.Keller授权，获得首批全球使用权并应用于论文打分工作中。系统结合全球签约博士与大数据分析，对论文进行详实考核，并打出预估分数，为留学生提供精准的修改参考</p>
             </div>

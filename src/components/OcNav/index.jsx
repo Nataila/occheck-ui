@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import LOGO from '../../assets/imgs/logo-white.png'
+import EDULOGO from '../../assets/imgs/logo-edu.png'
 import MenuImg from '../../assets/imgs/menu.png'
 
 import './index.sass';
@@ -32,8 +33,9 @@ const OcNav = (props) => {
   return (
     <div className='nav-wrapper flex flex-between'>
       <div>
-        <a href="/">
+        <a href="/" class="logo-group">
           <img className='logo' src={ LOGO } alt="" />
+          <img className='logo-edu' src={ EDULOGO } alt="" />
         </a>
       </div>
       <div className="mobile-menu just-mobile">

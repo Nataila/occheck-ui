@@ -96,8 +96,8 @@ export default function TaskList() {
       dataIndex: 'last_file',
       key: 'last_file',
       render: (file, record) => {
-        console.log(record)
-        return <span className="file-span" key={file} onClick={() => {resultDownLoad(record.uid, record.id, file)}}>{file ? '下载' : ''}</span>
+        const h = `/api/v1/result/download/${record.uid}/${record.id}`
+        return <a href={h} target="_blank">下载</a>
       }
     },
     {

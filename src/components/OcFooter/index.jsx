@@ -13,11 +13,7 @@ export default function OcFooter() {
             </div>
             <div className="contact-us-item">
               <div className="sub-title">联系电话:</div>
-              <div className="contact-us-doc">1234-567-8900</div>
-            </div>
-            <div className="contact-us-item">
-              <div className="sub-title">E-mail:</div>
-              <div className="contact-us-doc">123@qqw.com</div>
+              <div className="contact-us-doc">15965347737</div>
             </div>
             <div className="contact-us-item">
               <div className="sub-title">地址:</div>

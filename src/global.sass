@@ -94,6 +94,8 @@ h3
 
 .just-pc
   display: block !important
+.just-mobile-about-img
+  display: none
 
 .display-none
   display: none
@@ -242,7 +244,8 @@ h3
   .home
     background-image: linear-gradient(to bottom, #1890FF, #4ABBFF) !important
     .step.mobile-step
-      margin-top: 0 !important
+      margin-top: 20px !important
+      padding: 30px 0 60px ! important
       .flex
         padding: 0 20px
       .step-col
@@ -256,6 +259,8 @@ h3
             font-size: 12px !important
             font-size: 14px !important
   #root
+    .just-mobile-about-img
+      display: inline-block
     .deposit-root
       background-image: linear-gradient(to bottom, #1890FF, #4ABBFF) !important
       .banner-wrapper
@@ -398,17 +403,23 @@ h3
         margin-top: 20px
       .header
         font-size: 14px
+        img
+          height: 45px
       .oc-btn
         height: 30px
-        font-size: 14px
+        font-size: 12px
         line-height: 30px
         margin: 0
         border-radius: 10px
-        width: auto
+        width: max-content
         padding: 0 10px 10px
         margin-left: 10px
+      .text-center
+        .oc-btn
+          padding: 0 25px 25px
     .select-contry-m
       .ant-select-selector
+        color: #9B9B9B
         border-radius: 10px
     .comments-root
       .comment-list-wrapper
@@ -436,24 +447,29 @@ h3
         border-radius: 10px 10px 0 0
         background: #FFF
         margin-top: 20px
+        padding: 10px
         img
-          width: 25px
+          width: 20px
         .title, .sub-title
           font-size: 16px !important
           color: #000
         .about-content
           font-size: 12px
+          padding: 10px 0
         .about-ul
           li
-            font-size: 14px
+            font-size: 12px
       .about-panel.just-mobile
         border-radius: 0 0 10px 10px
+        padding-bottom: 40px
         background: #FFF
         .oc-shadow
           box-shadow: none
           height: auto
           padding: 10px
           text-align: left
+          p
+            margin-top: 10px
         .about-panel-title
           padding: 0
       .home-comment
