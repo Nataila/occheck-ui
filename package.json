@@ -11,7 +11,6 @@
     "axios": "^0.21.0",
     "js-file-download": "^0.4.12",
     "moment": "^2.29.1",
-    "node-sass": "4.14.1",
     "qrcode.react": "^1.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -43,5 +42,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://nataila.cn:8011/"
+  "proxy": "http://nataila.cn:8011/",
+  "devDependencies": {
+    "sass": "^1.49.9"
+  }
 }
