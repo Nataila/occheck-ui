@@ -65,6 +65,12 @@ const OcNav = (props) => {
           <li>
             <NavLink to="/comments" activeClassName='nav-selected'>用户评价</NavLink>
           </li>
+          <li>
+            <a href="https://yinghelunwen.com/" target="_blank">硬核论文</a>
+          </li>
+          <li>
+            <a href="https://beitailunwen.com/" target="_blank">备胎论文</a>
+          </li>
           {isSuperuser && isLogin ? 
             <li>
               <NavLink to="/admin" activeClassName='nav-selected'>后台管理</NavLink>
